@@ -1,0 +1,298 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+syntax on
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+colorscheme solarized
+set number
+set relativenumber
+
+filetype plugin indent on
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+filetype indent on
+set textwidth=80
+set wrapmargin=2
+set breakindent
+set autoread
+" Autosave when running :make tasks
+set autowrite
+set updatetime=100
+
+highlight OverLenght ctermbg=darkred ctermfg=white
+call matchadd ('OverLenght', '\%81v', 100)
+
+fun! StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    let _s=@/
+    let @/=_s
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python,perl,bash,sh autocmd BufWritePre
+\ <buffer> :call StripTrailingWhitespaces()
+
+" Drop the stabilizer wheels.
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+" Show whitespaces and related chars,
+" except on Golang files.
+set list
+set listchars=tab:>·,trail:~,extends:>,precedes:<
+autocmd FileType go set nolist
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ft=%s ts=%d sw=%d tw=%d %set :",
+        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" Set spell-checking for certain files
+autocmd FileType gitcommit,markdown,text call SetLocalSpell()
+function SetLocalSpell()
+    setlocal spell
+    setlocal complete+=kspell
+endfunction
+
+" Synatastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+
+" fugitive (git)
+set statusline+=%{fugitive#statusline()}
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" YouCompleteMe settings
+let g:ycm_register_as_syntastic_checker = 0
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_max_height = 25
+
+" Silver searcher (ag)
+" Taken from https://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" Open quickfix restuls in tabs
+" Taken from http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab#6853779
+:set switchbuf+=usetab,newtab
+
+" NERD Tree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Terraform
+let g:terraform_fmt_on_save = 1
+
+" Golang
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:syntastic_go_checkers = ['golint', 'vet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_fmt_fail_silently = 0
+
+au FileType go nmap <Leader>s  <Plug>(go-def-split)
+au FileType go nmap <Leader>v  <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i  <Plug>(go-info)
+au FileType go nmap <Leader>l  <Plug>(go-metalinter)
+au FileType go nmap <leader>r  <Plug>(go-run)
+au FileType go nmap <leader>b  <Plug>(go-build)
+au FileType go nmap <leader>t  <Plug>(go-test)
+au FileType go nmap <leader>dt <Plug>(go-test-compile)
+au FileType go nmap <Leader>d  <Plug>(go-doc)
+au FileType go nmap <Leader>e  <Plug>(go-rename)
+
+" lightline (statusbar)
+let g:lightline = {
+      \  'colorscheme': 'powerline',
+      \  'active': {
+      \    'left': [ [ 'mode', 'paste' ],
+      \              [ 'readonly', 'fugitive', 'modified', 'relativepath', 'ctrlpmark' ],
+      \              [ 'go' ] ],
+      \    'right': [ [ 'lineinfo' ],
+      \               [ 'percent' ],
+      \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \  },
+      \  'inactive': {
+      \    'left': [ [ 'readonly', 'fugitive', 'modified', 'relativepath', 'ctrlpmark' ],
+      \              [ 'go' ] ]
+      \  },
+      \  'component_function': {
+      \    'lineinfo': 'LightLineInfo',
+      \    'percent': 'LightLinePercent',
+      \    'modified': 'LightLineModified',
+      \    'filename': 'LightLineFilename',
+      \    'go': 'LightLineGo',
+      \    'fileformat': 'LightLineFileformat',
+      \    'filetype': 'LightLineFiletype',
+      \    'fileencoding': 'LightLineFileencoding',
+      \    'mode': 'LightLineMode',
+      \    'fugitive': 'LightLineFugitive',
+      \    'ctrlpmark': 'CtrlPMark',
+      \  },
+      \  'mode_map': {
+      \     'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V-L', "\<C-v>": 'V-B',
+      \     'c': 'C', 's': 'S', 'S': 'S-L', "\<C-s>": 'S-B', 't': 'T'
+      \  },
+      \ }
+
+function! LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineInfo()
+  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
+endfunction
+
+function! LightLinePercent()
+  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
+endfunction
+
+function! LightLineFugitive()
+  if exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? 'B: '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightLineGo()
+  " return ''
+  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
+endfunction
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  if mode() == 't'
+    return ''
+  endif
+
+  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]')
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+

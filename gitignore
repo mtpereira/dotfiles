@@ -1,0 +1,25 @@
+# Vim
+*.sw?
+.*.un~
+Session.vim
+
+# Python
+*.pyc
+
+# Ruby
+.rbenv-*
+.bundle/
+
+
+# Vagrant
+*.vagrant/
+*vagrant_ansible_inventory*
+
+# Mac OS
+.DS_Store
+
+# Ansible
+*.retry
+
+# VSCode
+.vscode
