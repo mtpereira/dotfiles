@@ -100,7 +100,7 @@ fi
 note "Installing dotfiles..."
 for path in .* ; do
     case $path in
-        .|..|.git|.gitignore)
+        .|..|.git|.gitignore|.talismanignore)
             continue
             ;;
         *)
