@@ -10,7 +10,6 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=( \
     aws \
-    brew \
     common-aliases \
     python \
     tmux \
@@ -25,30 +24,19 @@ plugins=( \
 
 setopt HIST_IGNORE_SPACE
 
-export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/Users/rag/bin:/Users/rag/bin/scripts:/Users/rag/go/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export EDITOR='vim'
-
-# rag: default gpg key
-export GPGKEY=82D3CE73
+# rag: import shell configurations
+source ~/.bash_env
+source ~/.bash_aliases
+source ~/.bash_functions
 
 # rag: set TERM
 export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-# rag: set go path
-export GOPATH=$HOME/go
-
-source ~/.bash_aliases
-source ~/.bash_functions
-
 # rag: start keychain
-eval `keychain --quiet --quick --eval --agents gpg,ssh tyr asgard`
+eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/tyr ~/.ssh/smart-pi)
 
 # rag: rbenv init
 eval "$(rbenv init -)"
