@@ -17,7 +17,7 @@ font -xos4-terminesspowerline-medium-r-normal--14-140-72-72-c-80-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -158,12 +158,12 @@ bindsym $mod+Shift+Ctrl+j move workspace to output down
 bindsym $mod+Shift+Ctrl+k move workspace to output up
 
 # manual management of external displays
-set $mode_display Ext Screen (y) HDMI ON, (Y) HDMI OFF, (d) DP ON, (D) DP OFF
+set $mode_display Ext Screen (h) HDMI ON, (j) HDMI OFF, (d) DP ON, (f) DP OFF
 mode "$mode_display" {
-    bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --above eDP-1, mode "default"
-    bindsym Y exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --above eDP-1, mode "default"
+    bindsym j exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
     bindsym d exec --no-startup-id xrandr --output DP-1 --auto --above eDP-1, mode "default"
-    bindsym D exec --no-startup-id xrandr --output DP-1 --auto --off, mode "default"
+    bindsym f exec --no-startup-id xrandr --output DP-1 --auto --off, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"

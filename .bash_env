@@ -1,7 +1,8 @@
+export TERMINAL="urxvt"
 export EDITOR="vim"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
-export GPGKEY=82D3CE73
+export GPGKEY=EEB5DC0C
 export GOPATH=$HOME/go
 export GOROOT=$HOME/bin/go
 PATH=$HOME/bin:$HOME/bin/scripts:$PATH
