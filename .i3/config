@@ -180,7 +180,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # screenshoter
-bindsym $mod+Print exec /usr/bin/mate-screenshot
+bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
+bindsym $mod+Shift+Print exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
 
 # system lock
 set $Locker i3lock && sleep 1
