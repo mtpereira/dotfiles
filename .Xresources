@@ -1,0 +1,18 @@
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.font:         xft:Hack-Regular:pixelsize=14
+URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold
+URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=14:slant=italic
+
+URxvt*background: black
+URxvt*foreground: grey
+URxvt*loginShell: true
+URxvt*scrollBar: false
+
