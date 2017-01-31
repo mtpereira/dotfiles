@@ -31,7 +31,8 @@
     rank = shortlog -sn --no-merges
     bdm  = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
     bdr  = "!git push origin --delete $@ && git branch -D $@"
-	ly   = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    ly   = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    pf   = push --force-with-lease
 
 [color]
     ui = auto
@@ -49,4 +50,4 @@
     gpgsign = true
 
 [init]
-	templatedir = ~/.git-templates
+    templatedir = ~/.git-templates
