@@ -6,6 +6,7 @@ export GPGKEY=EEB5DC0C
 export GOPATH=$HOME/go
 export GOROOT=$HOME/bin/go
 PATH=$HOME/bin:$HOME/bin/scripts:$PATH
+PATH=$HOME/.rbenv/bin:$PATH
 PATH=$GOPATH/bin:$PATH
 PATH=$GOROOT/bin:$PATH
 export PATH=$PATH
