@@ -4,7 +4,6 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export GPGKEY=EEB5DC0C
 export GOPATH=$HOME/go
-export GOROOT=$HOME/bin/go
 PATH=$HOME/bin:$HOME/bin/scripts:$PATH
 PATH=$HOME/.rbenv/bin:$PATH
 PATH=$GOPATH/bin:$PATH
