@@ -130,7 +130,9 @@ fi
 
 if has tmux; then
   cd $basedir
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
 fi
 
 note "Running post-install script, if any..."
