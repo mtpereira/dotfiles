@@ -128,11 +128,6 @@ if has vim; then
   ./.vim/update.sh all
 fi
 
-if has newsbeuter; then
-  cd $basedir
-  link newsbeuter-notifier.sh $bindir/newsbeuter-notifier.sh
-fi
-
 if has tmux; then
   cd $basedir
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
