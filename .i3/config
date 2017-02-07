@@ -171,8 +171,8 @@ mode "$mode_display" {
 bindsym $mod+x mode "$mode_display"
 
 # audio
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # scratchpad
@@ -198,42 +198,4 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+P mode "$mode_system"
-
-# rag: autostart
-# network
-exec /usr/bin/wicd-gtk
-for_window [class="Wicd-client.py"] floating enable
-for_window [class="Wicd-client.py"] floating_minimum_size 600 x 400
-for_window [class="Wicd-client.py"] floating_maximum_size 600 x 400
-
-# keyboard layout
-## swap caps
-# exec --no-startup-id xmodmap ~/.Xmodmap
-
-# wallpaper
-exec --no-startup-id feh --bg-scale ~/.background
-
-# scratchpad
-# taken from http://christian.amsuess.com/blog/config/changed_to_i3wm/
-bindsym $mod+p [instance="^scratchpad$"] scratchpad show
-exec_always flock -w1 ~/.config/i3/scratchpad/lockfile ~/.config/i3/scratchpad/perpetual_terminal.sh
-for_window [instance="^scratchpad$"] move scratchpad
-
-# gnome-settings-daemon
-exec --no-startup-id gnome-settings-daemon
-
-# dropbox
-exec --no-startup-id /usr/bin/dropbox start -i
-
-# thunar-volman
-# exec --no-startup-id /usr/bin/thunar-volman
-
-# xfce4-power-manager
-# exec --no-startup-id /usr/bin/xfce4-power-manager
-
-# conky
-# exec --no-startup-id conky
-
-# keepassx
-exec /usr/bin/keepassx
 
