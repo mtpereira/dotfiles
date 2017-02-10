@@ -150,20 +150,18 @@ bindsym $mod+Ctrl+l workspace next
 bindsym $mod+b workspace back_and_forth
 
 # monitor outputs
-bindsym $mod+Alt+h move container to output left
-bindsym $mod+Alt+l move container to output right
-bindsym $mod+Shift+Ctrl+h move workspace to output left
-bindsym $mod+Shift+Ctrl+l move workspace to output right
-bindsym $mod+Shift+Ctrl+j move workspace to output down
-bindsym $mod+Shift+Ctrl+k move workspace to output up
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+l move workspace to output right
+bindsym $mod+Mod1+j move workspace to output down
+bindsym $mod+Mod1+k move workspace to output up
 
 # manual management of external displays
 set $mode_display Ext Screen (h) HDMI ON, (j) HDMI OFF, (d) DP ON, (f) DP OFF
 mode "$mode_display" {
-    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --above eDP-1, mode "default"
-    bindsym j exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
-    bindsym d exec --no-startup-id xrandr --output DP-1 --auto --above eDP-1, mode "default"
-    bindsym f exec --no-startup-id xrandr --output DP-1 --auto --off, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1
+    bindsym j exec --no-startup-id xrandr --output HDMI1 --auto --off
+    bindsym d exec --no-startup-id xrandr --output DP1 --auto --above eDP1
+    bindsym f exec --no-startup-id xrandr --output DP1 --auto --off
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
