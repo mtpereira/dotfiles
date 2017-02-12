@@ -177,10 +177,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
-# scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
 # screenshoter
 bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
 bindsym $mod+Shift+Print exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
