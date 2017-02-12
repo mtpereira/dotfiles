@@ -197,6 +197,10 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+P mode "$mode_system"
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # rag: autostart
 # password manager
 exec /usr/bin/keepassx2
