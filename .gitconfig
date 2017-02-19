@@ -51,3 +51,6 @@
 
 [init]
     templatedir = ~/.git-templates
+
+[http "https://gopkg.in"]
+    followRedirects = true
