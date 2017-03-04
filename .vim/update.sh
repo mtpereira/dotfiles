@@ -33,7 +33,6 @@ me=.vim/update.sh
 repos=(
   https://github.com/Chiel92/vim-autoformat.git
   https://github.com/SirVer/ultisnips.git
-  https://github.com/Valloric/YouCompleteMe.git
   https://github.com/Xuyuanp/nerdtree-git-plugin.git
   https://github.com/airblade/vim-gitgutter.git
   https://github.com/altercation/vim-colors-solarized.git
@@ -53,6 +52,7 @@ repos=(
   https://github.com/tpope/vim-sensible.git
   https://github.com/junegunn/vim-easy-align.git
   https://github.com/ekalinin/Dockerfile.vim.git
+  https://github.com/Shougo/neocomplete.vim.git
   )
 
 # Here's a list of everything else to download in the format
