@@ -21,7 +21,7 @@ alias dm="docker-machine"
 alias h="heroku"
 
 # Utilities with some sane defaults
-alias rdp="xfreerdp -g 1024x640 -k pt --disable-theming --disable-menu-animations -u "
+alias rdp="xfreerdp /size:80% /scale:180 /kbd:'United Kingdom Extended' -themes -menu-anims +clipboard"
 alias rdp-old="exec rdesktop -k pt -g 1024x640 -r disk:$(hostname)='/home/rag/VirtualBox VMs/shared/' -u "
 alias swapcaps='xmodmap ~/.Xmodmap'
 alias tmux='tmux -2'
