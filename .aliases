@@ -1,3 +1,10 @@
+if [ -d ~/.aliases.d/ ]; then
+    for file in ~/.aliases.d/*.sh; do
+        [ -r "${file}" ] && source "${file}"
+    done
+    unset file
+fi
+
 # Shell commands
 alias ls='ls --color=auto -F'
 alias ll='ls -l'

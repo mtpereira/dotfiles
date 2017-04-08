@@ -27,16 +27,16 @@ setopt HIST_IGNORE_SPACE
 source $ZSH/oh-my-zsh.sh
 
 # rag: import shell configurations
-source ~/.bash_env
-source ~/.bash_aliases
-source ~/.bash_functions
+source ~/.env
+source ~/.aliases
+source ~/.functions
 
 # rag: set TERM
 export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 # rag: start keychain
-eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/tyr ~/.ssh/asgard ~/.ssh/smart-pi)
+eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/tyr ~/.ssh/asgard)
 
 # rag: rbenv init
 eval "$(rbenv init -)"
