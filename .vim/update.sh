@@ -53,6 +53,7 @@ repos=(
   https://github.com/junegunn/vim-easy-align.git
   https://github.com/ekalinin/Dockerfile.vim.git
   https://github.com/Shougo/neocomplete.vim.git
+  https://github.com/davidhalter/jedi-vim.git
   )
 
 # Here's a list of everything else to download in the format
