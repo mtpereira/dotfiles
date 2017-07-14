@@ -54,6 +54,9 @@ repos=(
   https://github.com/ekalinin/Dockerfile.vim.git
   https://github.com/Shougo/neocomplete.vim.git
   https://github.com/davidhalter/jedi-vim.git
+  https://github.com/jelera/vim-javascript-syntax.git
+  https://github.com/pangloss/vim-javascript.git
+  https://github.com/nathanaelkane/vim-indent-guides.git
   )
 
 # Here's a list of everything else to download in the format
