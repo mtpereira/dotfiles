@@ -54,3 +54,6 @@
 
 [http "https://gopkg.in"]
     followRedirects = true
+
+[includeIf "gitdir:~/projs/work/**"]
+    path = ~/.gitconfig-work
