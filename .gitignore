@@ -2,3 +2,6 @@
 .vim/.netrwhist
 .vim/spell
 .gitconfig-work
+.gnupg/*
+!.gnupg/gpg.conf
+!.gnupg/gpg-agent.conf
