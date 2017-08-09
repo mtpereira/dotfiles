@@ -157,10 +157,9 @@ bindsym $mod+Mod1+j move workspace to output down
 bindsym $mod+Mod1+k move workspace to output up
 
 # manual management of external displays
-set $mode_display Ext Screen (h) HDMI ON, (j) HDMI OFF, (d) DP ON, (f) DP OFF
+set $mode_display Ext Screen (h) HOME SETUP, (d) OFFICE SETUP, (f) DP OFF
 mode "$mode_display" {
-    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1
-    bindsym j exec --no-startup-id xrandr --output HDMI1 --auto --off
+    bindsym h exec --no-startup-id xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x360 --rotate normal --output DP1 --mode 1920x1080 --pos 3200x0 --rotate normal --auto --right-of eDP1 --panning 3840x2160+3200+0 --scale 2x2
     bindsym d exec --no-startup-id xrandr --output DP1 --auto --above eDP1
     bindsym f exec --no-startup-id xrandr --output DP1 --auto --off
     # back to normal: Enter or Escape
