@@ -32,11 +32,11 @@ alias rdp="xfreerdp /size:80% /scale:180 /kbd:'United Kingdom Extended' -themes 
 alias swapcaps='xmodmap ~/.Xmodmap'
 alias tmux='tmux -2'
 alias ejson='ejson --keydir ~/.ejson/keys'
-alias minikube-start='minikube start --vm-driver xhyve --insecure-registry localhost:5000'
+alias minikube-start='minikube start --insecure-registry localhost:5000'
 
 # Custom commands
 alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
-alias pip-upgrade="pip install --upgrade pip && pip list --outdated --format json | jq -r '.[].name' | xargs pip install --upgrade"
+alias pip-upgrade="sudo pip install --upgrade pip && sudo pip list --outdated --format json | jq -r '.[].name' | xargs sudo pip install --upgrade"
 alias ducks="du -cms * | sort -rn | head"
 alias yml-validate="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
 alias d-rmi="docker images -q --filter 'dangling=true' | xargs docker rmi"
