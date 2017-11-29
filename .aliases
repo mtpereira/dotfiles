@@ -14,8 +14,6 @@ alias grep="grep --color --exclude-dir='.svn' --exclude-dir='.git'"
 
 # Shorthands
 alias g="git"
-alias aptg="apt-get"
-alias aptc="apt-cache"
 alias s="sudo "
 alias v="vagrant"
 alias a="ansible"
@@ -26,6 +24,7 @@ alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias h="heroku"
+alias tf="terraform"
 
 # Utilities with some sane defaults
 alias rdp="xfreerdp /size:80% /scale:180 /kbd:'United Kingdom Extended' -themes -menu-anims +clipboard"
