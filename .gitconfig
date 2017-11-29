@@ -33,6 +33,7 @@
     bdr  = "!git push origin --delete $@ && git branch -D $@"
     ly   = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     pf   = push --force-with-lease
+    plk  = !bash -c 'git-crypt lock && git pl && git-crypt unlock <(gpg -qd ~/.secrets/git-crypt.key.gpg)'
 
 [color]
     ui = auto
