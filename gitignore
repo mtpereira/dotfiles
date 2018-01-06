@@ -21,5 +21,12 @@ Session.vim
 # Ansible
 *.retry
 
+# Terraform
+*.tfstate
+*.tfstate.*
+
 # VSCode
 .vscode
+
+# Nodejs
+node_modules/
