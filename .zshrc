@@ -31,6 +31,10 @@ source ~/.env
 source ~/.aliases
 source ~/.functions
 
+# rag: setup asdf
+source ~/.asdf/asdf.sh
+source ~/.asdf/completions/asdf.bash
+
 # rag: set TERM
 export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
