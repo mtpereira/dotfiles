@@ -160,7 +160,7 @@ bindsym $mod+Mod1+k move workspace to output up
 set $mode_display Ext Screen (h) HOME SETUP, (d) OFFICE SETUP, (f) DP OFF
 mode "$mode_display" {
     bindsym h exec --no-startup-id xrandr --output DP1 --auto --right-of eDP1 --primary
-    bindsym d exec --no-startup-id xrandr --output DP1 --auto --above eDP1
+    bindsym d exec --no-startup-id xrandr --output HDMI2 --auto --above eDP1
     bindsym f exec --no-startup-id xrandr --output DP1 --auto --off
     # back to normal: Enter or Escape
     bindsym Return mode "default"
