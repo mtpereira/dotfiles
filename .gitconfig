@@ -56,5 +56,8 @@
 [http "https://gopkg.in"]
     followRedirects = true
 
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [includeIf "gitdir:~/projs/work/**"]
     path = ~/.gitconfig-work
