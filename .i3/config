@@ -206,3 +206,6 @@ bindsym $mod+minus scratchpad show
 exec /usr/bin/keepassx2
 for_window [class="keepassx2"] move to scratchpad
 
+# rag: spotify starting on an isolated workspace
+for_window [class="Spotify"] move to workspace number 10, workspace 10, focus
+
