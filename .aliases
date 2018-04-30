@@ -9,36 +9,37 @@ fi
 alias ls='ls --color=auto -F'
 alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -lart'
 alias grep="grep --color --exclude-dir='.svn' --exclude-dir='.git'"
 
 # Shorthands
-alias g="git"
-alias s="sudo "
-alias v="vagrant"
 alias a="ansible"
 alias ap="ansible-playbook"
 alias ax="ansible-galaxy"
-alias e="${EDITOR}"
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias h="heroku"
+alias e="${EDITOR}"
+alias g="git"
+alias h="http"
+alias hk="heroku"
+alias k="kubectl"
+alias p="packer"
+alias s="sudo "
 alias tf="terraform"
+alias v="vagrant"
 
 # Utilities with some sane defaults
 alias rdp="xfreerdp /size:80% /scale:180 /kbd:'United Kingdom Extended' -themes -menu-anims +clipboard"
-alias swapcaps='xmodmap ~/.Xmodmap'
-alias tmux='tmux -2'
-alias ejson='ejson --keydir ~/.ejson/keys'
-alias minikube-start='minikube start --insecure-registry localhost:5000'
+alias swapcaps="setxkbmap -option ctrl:swapcaps"
+alias tmux="tmux -2"
 
 # Custom commands
-alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
-alias pip-upgrade="sudo pip install --upgrade pip && sudo pip list --outdated --format json | jq -r '.[].name' | xargs sudo pip install --upgrade"
-alias ducks="du -cms * | sort -rn | head"
-alias yml-validate="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
-alias d-rmi="docker images -q --filter 'dangling=true' | xargs docker rmi"
 alias d-rm="docker ps -a -q -f status=exited | xargs docker rm -v"
-alias d-volumes-rm="docker volume ls -qf dangling=true | xargs docker volume rm"
+alias d-rmi="docker images -q --filter 'dangling=true' | xargs docker rmi"
+alias d-rmv="docker volume ls -qf dangling=true | xargs docker volume rm"
+alias d-prune="docker system prune --all --volumes"
+alias ducks="du -cms * | sort -rn | head"
+alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
+alias ymlinter="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
 
