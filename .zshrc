@@ -11,15 +11,16 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=( \
     aws \
     common-aliases \
-    python \
-    tmux \
-    sudo \
-    vagrant \
-    gpg-agent \
-    heroku \
     docker \
     golang \
-    kubectl
+    gpg-agent \
+    heroku \
+    kops \
+    kubectl \
+    python \
+    sudo \
+    tmux \
+    vagrant
 )
 
 setopt HIST_IGNORE_SPACE
