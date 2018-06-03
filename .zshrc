@@ -1,6 +1,5 @@
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
 DEFAULT_USER="rag"
 CASE_SENSITIVE="false"
 DISABLE_AUTO_UPDATE="true"
@@ -8,24 +7,34 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="false"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=( \
-    aws \
-    common-aliases \
-    docker \
-    golang \
-    gpg-agent \
-    heroku \
-    kops \
-    kubectl \
-    python \
-    sudo \
-    tmux \
-    vagrant
-)
-
 setopt HIST_IGNORE_SPACE
 
-source $ZSH/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
+
+source "${HOME}/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/aws
+  zgen oh-my-zsh plugins/common-aliases
+  zgen oh-my-zsh plugins/docker
+  zgen oh-my-zsh plugins/golang
+  zgen oh-my-zsh plugins/gpg-agent
+  zgen oh-my-zsh plugins/heroku
+  zgen oh-my-zsh plugins/kops
+  zgen oh-my-zsh plugins/kubectl
+  zgen oh-my-zsh plugins/sudo
+  zgen oh-my-zsh plugins/tmux
+  zgen oh-my-zsh plugins/vagrant
+
+  zgen load denysdovhan/spaceship-prompt spaceship
+
+  zgen save
+fi
+
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_TIME_SHOW=true
 
 # rag: import shell configurations
 source ~/.env
