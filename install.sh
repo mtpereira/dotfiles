@@ -135,6 +135,8 @@ if has tmux; then
   fi
 fi
 
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+
 note "Running post-install script, if any..."
 postinstall=$HOME/.postinstall
 if [ -e $postinstall ]; then
