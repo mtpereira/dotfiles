@@ -47,6 +47,12 @@
 [branch]
     autosetuprebase = always
 
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
 [commit]
     gpgsign = true
 
