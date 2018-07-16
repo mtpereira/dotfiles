@@ -26,6 +26,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/tmux
   zgen oh-my-zsh plugins/vagrant
+  zgen oh-my-zsh plugins/yarn
 
   zgen load denysdovhan/spaceship-prompt spaceship
 
