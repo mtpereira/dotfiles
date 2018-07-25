@@ -27,6 +27,7 @@ Session.vim
 
 # VSCode
 .vscode
+.vs/
 
 # Nodejs
 node_modules/
