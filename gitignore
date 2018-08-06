@@ -34,3 +34,8 @@ node_modules/
 
 # asdf tool manager
 .tool-versions
+
+# Terraform
+.terraform/
+**/plan
+**/*.plan
