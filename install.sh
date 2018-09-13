@@ -135,7 +135,12 @@ if has tmux; then
   fi
 fi
 
-git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+if has zsh; then
+  cd $basedir
+  if [ ! -d ~/.zgen ]; then
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+  fi
+fi
 
 note "Running post-install script, if any..."
 postinstall=$HOME/.postinstall
