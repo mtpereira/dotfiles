@@ -39,3 +39,7 @@ node_modules/
 .terraform/
 **/plan
 **/*.plan
+
+#IntelliJ Idea
+.idea/
+
