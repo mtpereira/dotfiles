@@ -194,7 +194,7 @@ bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/P
 bindsym $mod+Shift+Print exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
 
 # system lock
-set $Locker i3lock && sleep 3
+set $Locker i3lock -c 000000 -e -f && sleep 3
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (Shift+r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
