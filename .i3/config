@@ -224,6 +224,7 @@ for_window [class="Chromium"] move to workspace number $ws2, focus
 for_window [class="Keybase"] move to workspace number $ws2, focus
 for_window [class="Signal"] move to workspace number $ws5, focus
 for_window [class="Code"] move to workspace number $ws4, focus
+for_window [class="jetbrains-idea-ce"] move to workspace number $ws4, focus
 for_window [class="Slack"] move to workspace number $ws5, focus
 for_window [class="zoom"] move to workspace number $ws5, focus
 for_window [class="Spotify"] move to workspace number $ws10, focus
