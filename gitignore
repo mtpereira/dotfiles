@@ -42,4 +42,5 @@ node_modules/
 
 #IntelliJ Idea
 .idea/
+*/out/
 
