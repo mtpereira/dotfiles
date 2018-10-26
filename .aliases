@@ -42,6 +42,7 @@ alias d-prune="docker system prune --all --volumes"
 alias ducks="du -cms * | sort -rn | head"
 alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
 alias ymlinter="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
+alias zgen-upgrade="zgen update && zgen reset && source ~/.zshrc"
 
 # Shell replacement tools
 alias cat="bat"
