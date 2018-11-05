@@ -57,3 +57,6 @@ eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/tyr ~/.ssh/asgard
 # rag: rbenv init
 eval "$(rbenv init -)"
 
+# rag: configure fzf keybindings
+source /usr/share/fzf/key-bindings.zsh
+
