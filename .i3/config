@@ -77,40 +77,40 @@ bindsym $mod+a focus parent
 #bindcode $mod+d focus child
 
 # workspaces' names
-set $ws1 "1:personal"
-set $ws2 "2:work"
-set $ws3 "3:stuff"
-set $ws4 "4:code"
-set $ws5 "5:comm"
-set $ws6 "6:doc"
-set $ws7 "7:blank"
-set $ws8 "8:blank"
-set $ws9 "9:blank"
-set $ws10 "10:music"
+set $ws_personal "1:personal"
+set $ws_work "2:work"
+set $ws_comm "3:comm"
+set $ws_code "4:code"
+set $ws_doc "5:doc"
+set $ws_stuff "6:stuff"
+set $ws_blank1 "7:blank"
+set $ws_blank2 "8:blank"
+set $ws_blank3 "9:blank"
+set $ws_music "10:music"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace $ws_personal
+bindsym $mod+2 workspace $ws_work
+bindsym $mod+3 workspace $ws_comm
+bindsym $mod+4 workspace $ws_code
+bindsym $mod+5 workspace $ws_doc
+bindsym $mod+6 workspace $ws_stuff
+bindsym $mod+7 workspace $ws_blank1
+bindsym $mod+8 workspace $ws_blank2
+bindsym $mod+9 workspace $ws_blank3
+bindsym $mod+0 workspace $ws_music
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace $ws_personal
+bindsym $mod+Shift+2 move container to workspace $ws_work
+bindsym $mod+Shift+3 move container to workspace $ws_comm
+bindsym $mod+Shift+4 move container to workspace $ws_code
+bindsym $mod+Shift+5 move container to workspace $ws_doc
+bindsym $mod+Shift+6 move container to workspace $ws_stuff
+bindsym $mod+Shift+7 move container to workspace $ws_blank1
+bindsym $mod+Shift+8 move container to workspace $ws_blank2
+bindsym $mod+Shift+9 move container to workspace $ws_blank3
+bindsym $mod+Shift+0 move container to workspace $ws_music
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -212,6 +212,7 @@ bindsym $mod+Shift+P mode "$mode_system"
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+z sticky toggle
 
 # rag: autostart
 # password manager
@@ -220,12 +221,12 @@ for_window [class="keepassxc"] move to scratchpad
 exec /usr/bin/run_keybase
 
 # rag: auto arrange some specific applications
-for_window [class="Chromium"] move to workspace number $ws2, focus
-for_window [class="Keybase"] move to workspace number $ws2, focus
-for_window [class="Signal"] move to workspace number $ws5, focus
-for_window [class="Code"] move to workspace number $ws4, focus
-for_window [class="jetbrains-idea-ce"] move to workspace number $ws4, focus
-for_window [class="Slack"] move to workspace number $ws5, focus
-for_window [class="zoom"] move to workspace number $ws5, focus
-for_window [class="Spotify"] move to workspace number $ws10, focus
+for_window [class="Chromium"] move to workspace number $ws_work, focus
+for_window [class="Keybase"] move to workspace number $ws_work, focus
+for_window [class="Signal"] move to workspace number $ws_comm, focus
+for_window [class="Code"] move to workspace number $ws_code, focus
+for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code, focus
+for_window [class="Slack"] move to workspace number $ws_comm, focus
+for_window [class="zoom"] move to workspace number $ws_comm, focus
+for_window [class="Spotify"] move to workspace number $ws_music, focus
 
