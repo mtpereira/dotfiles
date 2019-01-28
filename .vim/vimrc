@@ -1,6 +1,3 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 syntax on
 set background=dark
 let g:solarized_termtrans=1
@@ -68,23 +65,9 @@ function SetLocalSpell()
     setlocal complete+=kspell
 endfunction
 
-" Synatastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-
 " fugitive (git)
 set statusline+=%{fugitive#statusline()}
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" YouCompleteMe settings
-let g:ycm_register_as_syntastic_checker = 0
 
 " ctrlp
 let g:ctrlp_map = '<c-p>'
@@ -286,24 +269,35 @@ endfunction
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'')'
+" ale
+let g:ale_sign_warning = '⚠️'
+let g:ale_sign_error = '☠️'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+" Only run ALE on save
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 1
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+"let g:ale_keep_list_window_open = 1
+" Set this in your vimrc file to disabling highlighting
+" let g:ale_set_highlights = 0
+let g:ale_linters = {
+  \ 'javascript': ['standard'],
+  \ 'ruby': ['rubocop'],
+\}
+let g:ale_ruby_rubocop_executable = 'bundle'
+" Show 5 lines of errors (default: 10)
+let g:ale_list_window_size = 5
+nmap <leader>d :ALEDetail<CR>
 
