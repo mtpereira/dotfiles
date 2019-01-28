@@ -125,7 +125,7 @@ done
 note "Initializing tools..."
 if has vim; then
   cd $basedir
-  ./.vim/update.sh all
+  ./.vim/install.sh
 fi
 
 if has tmux; then
