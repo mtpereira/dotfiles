@@ -222,7 +222,7 @@ exec /usr/bin/run_keybase
 
 # rag: auto arrange some specific applications
 for_window [class="Chromium"] move to workspace number $ws_work, focus
-for_window [class="Keybase"] move to workspace number $ws_work, focus
+for_window [class="Keybase"] move to workspace number $ws_comm, focus
 for_window [class="Signal"] move to workspace number $ws_comm, focus
 for_window [class="Code"] move to workspace number $ws_code, focus
 for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code, focus
