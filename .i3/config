@@ -183,6 +183,9 @@ mode "$mode_display" {
 }
 bindsym $mod+x mode "$mode_display"
 
+# rag: re-apply wallpaper
+bindsym $mod+Shift+w exec --no-startup-id feh --bg-max ~/.wallpaper.png
+
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
