@@ -169,11 +169,14 @@ bindsym $mod+Mod1+j move workspace to output down
 bindsym $mod+Mod1+k move workspace to output up
 
 # manual management of external displays
-set $mode_display Ext Screen (h) HOME SETUP, (d) OFFICE SETUP, (f) DP OFF
+set $mode_display (h) HOME SETUP, (o) OFFICE SETUP, (f/v) DP OFF
 mode "$mode_display" {
+    # loki
     bindsym h exec --no-startup-id xrandr --output DP1 --auto --right-of eDP1 --primary
-    bindsym d exec --no-startup-id xrandr --output HDMI2 --auto --above eDP1
     bindsym f exec --no-startup-id xrandr --output DP1 --auto --off
+    # tyr
+    bindsym o exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1 --primary
+    bindsym v exec --no-startup-id xrandr --output HDMI2 --auto --off
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
