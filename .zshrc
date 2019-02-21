@@ -37,6 +37,7 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_BATTERY_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
 
 # rag: import shell configurations
 source ~/.env
