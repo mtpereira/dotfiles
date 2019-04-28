@@ -46,4 +46,5 @@ alias zgen-upgrade="zgen update && zgen reset && source ~/.zshrc"
 
 # Shell replacement tools
 alias cat="bat"
+alias less="bat --paging=always"
 
