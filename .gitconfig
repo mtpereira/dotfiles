@@ -1,77 +1,79 @@
 [user]
-    name = Manuel Tiago Pereira
-    email = mt.pereira@gmail.com
-    signing = key
+  name = Manuel Tiago Pereira
+  email = mt.pereira@gmail.com
+  signing = key
 
 [merge]
-    tool = vimdiff
+  tool = vimdiff
 
 [alias]
-    ci   = commit --verbose
-    cam  = commit --amend
-    st   = status
-    s    = status -s -b
-    l    = log --graph --decorate --all --name-status --pretty='%C(auto)%h%Creset %C(auto)%d%Creset %cN (%ce) %ad %n %s'
-    df   = diff
-    co   = checkout
-    cob  = checkout -b
-    a    = add
-    ap   = add -p
-    f    = fetch
-    ps   = push --set-upstream
-    pst  = !git ps && git ps --tags
-    pl   = pull
-    up   = !git pull $@ && git submodule update --init --recursive
-    m    = merge
-    b    = branch
-    ba   = branch -a
-    bd   = branch -d
-    bD   = branch -D
-    dc   = diff --cached
-    rank = shortlog -sn --no-merges
-    bdm  = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
-    bdr  = "!git push origin --delete $@ && git branch -D $@"
-    ly   = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-    pf   = push --force-with-lease
-    plk  = !bash -c 'git-crypt lock && git pl && git-crypt unlock <(gpg -qd ~/.secrets/git-crypt.key.gpg)'
+  ci   = commit --verbose
+  cam  = commit --amend
+  st   = status
+  s    = status -s -b
+  l    = log --graph --decorate --pretty=oneline --abbrev-commit
+  df   = diff
+  co   = checkout
+  cob  = checkout -b
+  cos  = "!git stash && git fetch && git checkout $@ ; git stash pop"
+  a    = add
+  ap   = add -p
+  f    = fetch
+  ps   = push --set-upstream
+  pst  = !git ps && git ps --tags
+  pl   = pull
+  up   = !git pull $@ && git submodule update --init --recursive
+  m    = merge
+  b    = branch
+  ba   = branch -a
+  bd   = branch -d
+  bD   = branch -D
+  dc   = diff --cached
+  rank = shortlog -sn --no-merges
+  bdm  = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+  bdr  = "!git push origin --delete $@ && git branch -D $@"
+  ly   = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  pf   = push --force-with-lease
+  plk  = !bash -c 'git-crypt lock && git pl && git-crypt unlock <(gpg -qd ~/.secrets/git-crypt.key.gpg)'
+  cr   = "!bash -c 'git clone -b ${2} -- ${1} $(echo ${1%%.git} | cut -d / -f2)_${2}_$(date +%Y%m%d%H%M)' -"
 
 [color]
-    ui = auto
+  ui = auto
 
 [pager]
-    diff = diff-so-fancy | less --tabs=1,5 -RFX
-    show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
 
 [diff-so-fancy]
-    markEmptyLines = false
+  markEmptyLines = false
 
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
 [push]
-    default = simple
+  default = simple
 
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 
 [pull]
-    rebase = true
+  rebase = true
 
 [rebase]
-    autoStash = true
-    autoSquash = true
+  autoStash = true
+  autoSquash = true
 
 [commit]
-    gpgsign = true
+  gpgsign = true
 
 [init]
-    templatedir = ~/.git-templates
+  templatedir = ~/.git-templates
 
 [http "https://gopkg.in"]
-    followRedirects = true
+  followRedirects = true
 
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+  insteadOf = https://github.com/
 
 [includeIf "gitdir:~/projs/work/**"]
-    path = ~/.gitconfig-work
+  path = ~/.gitconfig-work
