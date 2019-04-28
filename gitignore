@@ -43,4 +43,4 @@ node_modules/
 #IntelliJ Idea
 .idea/
 */out/
-
+.attach_pid*
