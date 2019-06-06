@@ -30,6 +30,7 @@ if ! zgen saved; then
 
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
+  zgen load zsh-users/zsh-syntax-highlighting
 
   zgen save
 fi
