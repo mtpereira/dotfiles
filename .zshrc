@@ -28,16 +28,11 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vagrant
   zgen oh-my-zsh plugins/yarn
 
-  zgen load denysdovhan/spaceship-prompt spaceship
+  zgen load mafredri/zsh-async
+  zgen load sindresorhus/pure
 
   zgen save
 fi
-
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_BATTERY_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
 
 # rag: import shell configurations
 source ~/.env
