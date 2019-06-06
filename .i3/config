@@ -17,7 +17,7 @@ font -xos4-terminesspowerline-medium-r-normal--14-140-72-72-c-80-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+Q kill
