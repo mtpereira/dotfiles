@@ -44,12 +44,8 @@ source ~/.functions
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
 
-# rag: set TERM
-export TERM=xterm-256color
-[ -n "$TMUX" ] && export TERM=screen-256color
-
 # rag: start keychain
-eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/tyr ~/.ssh/asgard)
+eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/id_rsa)
 
 # rag: rbenv init
 eval "$(rbenv init -)"
