@@ -217,7 +217,7 @@ for_window [class="keepassxc"] move to scratchpad
 # rag: auto arrange some specific applications
 for_window [class="Keybase"] move to workspace number $ws_comm, focus
 for_window [class="Signal"] move to workspace number $ws_comm, focus
-for_window [class="Code"] move to workspace number $ws_code, focus
+for_window [class="code-oss"] move to workspace number $ws_code, focus
 for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code, focus
 for_window [class="Slack"] move to workspace number $ws_comm, focus
 for_window [class="zoom"] move to workspace number $ws_comm, focus
