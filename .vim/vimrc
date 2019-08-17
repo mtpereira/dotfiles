@@ -112,18 +112,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:terraform_fmt_on_save = 1
 
 " Golang
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_list_type = 'locationlist'
+let g:go_fmt_command = 'goreturns'
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
-let g:go_metalinter_enabled = ['golint', 'vet', 'errcheck']
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_deadline = "5s"
 let g:go_fmt_fail_silently = 0
 
 au FileType go nmap <Leader>s  <Plug>(go-def-split)
