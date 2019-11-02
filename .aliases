@@ -6,11 +6,12 @@ if [ -d ~/.aliases.d/ ]; then
 fi
 
 # Shell commands
-alias ls='ls --color=auto -F'
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -lart'
-alias grep="grep --color --exclude-dir='.svn' --exclude-dir='.git'"
+alias ls='exa -F'
+alias la='ls -a'
+alias l='exa --sort new --long --git --classify --extended'
+alias grep="ag"
+alias cat="bat"
+alias less="bat --paging=always"
 
 # Shorthands
 alias a="ansible"
@@ -43,8 +44,3 @@ alias ducks="du -cms * | sort -rn | head"
 alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
 alias ymlinter="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
 alias zgen-upgrade="zgen update && zgen reset && source ~/.zshrc"
-
-# Shell replacement tools
-alias cat="bat"
-alias less="bat --paging=always"
-
