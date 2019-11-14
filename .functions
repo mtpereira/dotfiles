@@ -27,6 +27,12 @@ function die() {
     return 1
 }
 
+function path_add() {
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
 # tput helper
 # Taken from: (http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/)
 function tputcolors() {
@@ -96,7 +102,7 @@ function man() {
 ### SHELL UTILS ###
 # source .bashrc
 function resource() {
-    source ${HOME}/.bashrc
+    source ${HOME}/.zshrc
 }
 
 ### SSH ###
