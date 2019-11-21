@@ -8,7 +8,7 @@ fi
 # Shell commands
 alias ls='exa -F'
 alias la='ls -a'
-alias l='exa --sort new --long --git --classify --extended'
+alias l='exa --sort new --long --git --classify'
 alias grep="ag"
 alias cat="bat"
 alias less="bat --paging=always"
