@@ -6,9 +6,9 @@ if [ -d ~/.aliases.d/ ]; then
 fi
 
 # Shell commands
-alias ls='exa -F'
-alias la='ls -a'
-alias l='exa --sort new --long --git --classify'
+alias ls="exa -F"
+alias l="exa --sort new --long --git --classify"
+alias la="l -a"
 alias grep="ag"
 alias cat="bat"
 alias less="bat --paging=always"
