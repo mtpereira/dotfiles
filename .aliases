@@ -9,7 +9,6 @@ fi
 alias ls="exa -F"
 alias l="exa --sort new --long --git --classify"
 alias la="l -a"
-alias grep="ag"
 alias cat="bat"
 alias less="bat --paging=always"
 
