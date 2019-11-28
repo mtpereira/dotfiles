@@ -88,16 +88,16 @@ function link() {
 
 # colourful man
 function man() {
-	env \
-		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-		LESS_TERMCAP_md=$(printf "\e[1;31m") \
-		LESS_TERMCAP_me=$(printf "\e[0m") \
-		LESS_TERMCAP_se=$(printf "\e[0m") \
-		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-		LESS_TERMCAP_ue=$(printf "\e[0m") \
-		LESS_TERMCAP_us=$(printf "\e[1;32m") \
-		man "$@"
-}
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+  }
 
 ### SHELL UTILS ###
 # source .bashrc
@@ -167,5 +167,44 @@ function dm-start() {
 
     docker-machine start "${1}"
     eval $(docker-machine env "${1}")
+}
+
+### Ruby ###
+
+function ruby-setup() {
+  if [ $# -lt 1 ]; then
+        echo "Usage: $0 RUBY_VERSION"
+        return 1
+    fi
+
+  ruby_version="${1}"
+
+  # install latest ruby version if requested
+  if [ "${ruby_version}" = "latest" ]; then
+    pushd "${HOME}/.rbenv/" >/dev/null
+    git pull --quiet
+    popd >/dev/null
+    ruby_version=$(rbenv install -l | grep -E '^ +([0-9]\.){2}[0-9]$' | tail -n 1 | tr -d ' ')
+  fi
+
+  # only install if version is not installed already
+  if [ "$(rbenv versions | grep ${ruby_version}); echo $?" = "1" ]; then
+
+    note "installing ruby ${ruby_version}"
+    rbenv install "$ruby_version" \
+      || die "rbenv failed to install version ${ruby_version}"
+  fi
+  # write .ruby-version file
+  rbenv local "$ruby_version"
+  rbenv rehash
+
+  # create gemset and write .rbenv-gemset file
+  rbenv gemset init
+
+  # install gems
+  gem install bundler
+  if [ -r ./Gemfile ]; then
+    bundle install
+  fi
 }
 
