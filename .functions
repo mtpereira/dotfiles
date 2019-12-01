@@ -23,7 +23,7 @@ function warn() {
 }
 
 function die() {
-    echo "$(basename ${0}): ${*}"
+    err "${*}"
     return 1
 }
 
@@ -172,12 +172,17 @@ function dm-start() {
 ### Ruby ###
 
 function ruby-setup() {
-  if [ $# -lt 1 ]; then
-        echo "Usage: $0 RUBY_VERSION"
-        return 1
-    fi
+  if [ $# -lt 1 ] && [ ! -r ./.ruby-version ]; then
+    echo "Usage: $0 [RUBY_VERSION]"
+    echo "Provide a Ruby version on either the first parameter or on a '.ruby-version' file."
+    return 1
+  fi
 
-  ruby_version="${1}"
+  local ruby_version="${1:-$(cat ./.ruby-version)}"
+  if [ "${ruby_version}" = "" ]; then
+    note "Defaulting to the latest Ruby version."
+    ruby_version="latest"
+  fi
 
   # install latest ruby version if requested
   if [ "${ruby_version}" = "latest" ]; then
@@ -189,11 +194,13 @@ function ruby-setup() {
 
   # only install if version is not installed already
   if [ "$(rbenv versions | grep ${ruby_version}); echo $?" = "1" ]; then
-
-    note "installing ruby ${ruby_version}"
+    note "Installing Ruby version ${ruby_version}."
     rbenv install "$ruby_version" \
-      || die "rbenv failed to install version ${ruby_version}"
+      || die "rbenv failed to install version ${ruby_version}!"
+  else
+    note "Ruby version ${ruby_version} already installed."
   fi
+
   # write .ruby-version file
   rbenv local "$ruby_version"
   rbenv rehash
@@ -201,9 +208,16 @@ function ruby-setup() {
   # create gemset and write .rbenv-gemset file
   rbenv gemset init
 
-  # install gems
-  gem install bundler
+  note "Installing gems for development."
+  gem install \
+    bundler \
+    debase \
+    reek \
+    rubocop \
+    ruby-debug-ide
+
   if [ -r ./Gemfile ]; then
+    note "Bundelling gems."
     bundle install
   fi
 }
