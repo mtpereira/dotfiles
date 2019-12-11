@@ -207,19 +207,20 @@ bindsym $mod+Shift+P mode "$mode_system"
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
 bindsym $mod+Shift+z sticky toggle
 
 # rag: autostart
 # password manager
 exec /usr/bin/keepassxc
-for_window [class="keepassxc"] move to scratchpad
+for_window [class="keepassxc"] move scratchpad
 
 # rag: auto arrange some specific applications
-for_window [class="Keybase"] move to workspace number $ws_comm, focus
-for_window [class="Signal"] move to workspace number $ws_comm, focus
-for_window [class="code-oss"] move to workspace number $ws_code, focus
-for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code, focus
-for_window [class="Slack"] move to workspace number $ws_comm, focus
-for_window [class="zoom"] move to workspace number $ws_comm, focus
-for_window [class="Spotify"] move to workspace number $ws_music, focus
+for_window [class="Signal"] move to workspace number $ws_comm
+for_window [class="code-oss"] move to workspace number $ws_code
+for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code
+for_window [class="jetbrains-goland"] move to workspace number $ws_code
+for_window [class="Slack"] move to workspace number $ws_comm
+for_window [class="zoom"] move to workspace number $ws_comm
+for_window [class="Spotify"] move to workspace number $ws_music
 
