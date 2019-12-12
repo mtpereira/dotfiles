@@ -222,3 +222,16 @@ function ruby-setup() {
   fi
 }
 
+function switch-network() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: $0 NETWORK_NAME"
+    echo "Provide the network name you wish to connect to."
+    return 1
+  fi
+
+  local network_name="${1}"
+
+   sudo netctl stop-all \
+    && sudo netctl restart "${network_name}" \
+    && sudo systemctl restart systemd-resolved.service
+}
