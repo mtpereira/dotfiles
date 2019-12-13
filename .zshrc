@@ -36,9 +36,9 @@ if ! zgen saved; then
 fi
 
 # rag: import shell configurations
-source ~/.env
-source ~/.aliases
-source ~/.functions
+source ~/.env.sh
+source ~/.aliases.sh
+source ~/.functions.sh
 
 # rag: setup asdf
 source ~/.asdf/asdf.sh

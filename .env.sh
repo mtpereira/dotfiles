@@ -1,4 +1,4 @@
-source $HOME/.functions
+source $HOME/.functions.sh
 
 export TERMINAL="urxvt"
 export EDITOR="vim"
