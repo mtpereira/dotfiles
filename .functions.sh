@@ -222,9 +222,9 @@ function ruby-setup() {
   fi
 }
 
-function switch-network() {
-  read -r -d '' USAGE <<-'EOF'
-    Usage: $0 NETWORK_NAME [OPTIONS]
+function network() {
+  read -r -d '' USAGE <<-EOF
+    Usage: ${0} NETWORK_NAME [OPTIONS]
     Provide the network name you wish to connect to.
 
     Options:
