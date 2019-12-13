@@ -223,15 +223,43 @@ function ruby-setup() {
 }
 
 function switch-network() {
+  read -r -d '' USAGE <<-'EOF'
+    Usage: $0 NETWORK_NAME [OPTIONS]
+    Provide the network name you wish to connect to.
+
+    Options:
+    --vpn: Also start the openvpn client.
+EOF
+
   if [ $# -lt 1 ]; then
-    echo "Usage: $0 NETWORK_NAME"
-    echo "Provide the network name you wish to connect to."
+    echo "${USAGE}"
     return 1
   fi
 
-  local network_name="${1}"
+  if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
+    echo "${USAGE}"
+    return 0
+  fi
 
-   sudo netctl stop-all \
+  local network_name="${1}"
+  local vpn=0
+
+  if [ "${2}" != "" ] && [ "${2}" != "--vpn" ]; then
+    echo "${USAGE}"
+    return 1
+  else
+    vpn=1
+  fi
+
+  note "Connecting to the ${network_name} network..."
+  sudo netctl stop-all \
+    && sudo systemctl stop openvpn-client@protonvpn \
     && sudo netctl restart "${network_name}" \
     && sudo systemctl restart systemd-resolved.service
+
+  if [ ${vpn} -eq 1 ]; then
+    note "Starting the openvpn client..."
+    sudo systemctl restart openvpn-client@protonvpn
+  fi
 }
+
