@@ -263,3 +263,25 @@ EOF
   fi
 }
 
+function headphones() {
+  read -r -d '' USAGE <<-EOF
+    Manage connection to bluetooth headphones.
+    Usage: ${0} ACTION
+    ACTION is either "connect" or "disconnect".
+EOF
+
+   local -r mac_address="38:18:4C:3E:95:E8"
+   local action="${1}"
+   if [ "${action}" != "connect" ] && [ "${action}" != "disconnect" ]; then
+     echo "${USAGE}"
+     return 1
+   fi
+
+   read -r -d '' COMMANDS <<EOF
+     power on
+     ${action} ${mac_address}
+EOF
+
+  echo "${COMMANDS}" | bluetoothctl
+  unset COMMANDS
+}
