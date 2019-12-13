@@ -50,6 +50,7 @@ package https://github.com/fatih/vim-go &
 package https://github.com/ekalinin/Dockerfile.vim &
 package https://github.com/pangloss/vim-javascript &
 package https://github.com/maralla/completor.vim &
+package https://github.com/vim-scripts/bash-support.vim &
 wait
 ) &
 
