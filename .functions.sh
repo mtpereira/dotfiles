@@ -49,7 +49,7 @@ function tputcolors() {
 ### SHELL FILE OPERATIONS ###
 # mkdir && cd
 function mkd() {
-    mkdir ${@} && cd ${1}
+    mkdir "${@}" cd "${1}"
 }
 
 # mkdir && mv
@@ -59,7 +59,7 @@ function mkv() {
 
 # cp && EDITOR
 function cped () {
-    cp -i ${1} ${2} && $EDITOR ${2}
+    cp -i "${1}" "${2}" && $EDITOR "${2}"
 }
 
 # symlink
@@ -67,23 +67,23 @@ function link() {
     src=$1
     dest=$2
 
-    if [ -e $dest ]; then
-        if [ -L $dest ]; then
+    if [ -e "$dest" ]; then
+        if [ -L "$dest" ]; then
             # Already symlinked -- I'll assume correctly.
             return
         else
             # Rename files with a ".old" extension.
             warn "$dest file already exists, renaming to $dest.old"
             backup=$dest.old
-            if [ -e $backup ]; then
+            if [ -e "$backup" ]; then
                 die "$backup already exists. Aborting."
             fi
-            mv -v $dest $backup
+            mv -v "$dest" "$backup"
         fi
     fi
 
     # Update existing or create new symlinks.
-    ln -vsf $src $dest
+    ln -vsf "$src" "$dest"
 }
 
 # colourful man
@@ -102,7 +102,7 @@ function man() {
 ### SHELL UTILS ###
 # source .bashrc
 function resource() {
-    source ${HOME}/.zshrc
+    source "${HOME}"/.zshrc
 }
 
 ### SSH ###
@@ -129,16 +129,16 @@ function ssh-select-key() {
         selected="$(hostname -s)"
     else
         selected="${1}"
-        if [ ! -e ${sshdir}/"${selected}" ] ||
-           [ ! -e ${sshdir}/"${selected}".pub ]; then
+        if [ ! -e "${sshdir}"/"${selected}" ] ||
+           [ ! -e "${sshdir}"/"${selected}".pub ]; then
             err "Selected key does not exist: ${selected}"
             return 1
         fi
     fi
     note "Selected key: ${selected}"
-    if [ -e ${sshdir}/id_rsa ] &&
-       [ -e ${sshdir}/id_rsa.pub ] &&
-       [ ! -L ${sshdir}/id_rsa ] &&
+    if [ -e "${sshdir}"/id_rsa ] &&
+       [ -e "${sshdir}"/id_rsa.pub ] &&
+       [ ! -L "${sshdir}"/id_rsa ] &&
        [ ! -L ${sshdir}/id_rsa.pub ]; then
         err "id_rsa files exist and are NOT symlinks!"
         return 1
