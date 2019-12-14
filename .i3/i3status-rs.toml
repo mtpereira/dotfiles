@@ -1,4 +1,8 @@
-theme = "bad-wolf"
+[theme]
+name = "slick"
+[theme.overrides]
+alternating_tint_bg = "#000000"
+alternating_tint_fg = "#000000"
 
 [icons]
 name = "awesome"
