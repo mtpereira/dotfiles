@@ -247,7 +247,7 @@ EOF
   if [ "${2}" != "" ] && [ "${2}" != "--vpn" ]; then
     echo "${USAGE}"
     return 1
-  else
+  elif [ "${2}" = "--vpn" ]; then
     vpn=1
   fi
 
@@ -282,6 +282,7 @@ EOF
      ${action} ${mac_address}
 EOF
 
+  note "Running the ${action} command..."
   echo "${COMMANDS}" | bluetoothctl
   unset COMMANDS
 }
