@@ -99,3 +99,8 @@ block = "time"
 interval = 60
 format = "%F %R"
 timezone = "Europe/Lisbon"
+
+[[block]]
+block = "custom"
+command = "~/.i3/show-layout.sh"
+interval = 5
