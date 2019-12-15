@@ -36,7 +36,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="alacritty" --display-binary --use-xdg-de
 bindsym $mod+Shift+d exec dmenu_run
 
 # change focus
