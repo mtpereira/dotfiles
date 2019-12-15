@@ -77,8 +77,9 @@ interval = 5
 block = "music"
 player = "spotify"
 buttons = ["play"]
-on_collapsed_click = "spotify"
-marquee_speed = 1
+marquee_speed = 0.25
+marquee_interval = 3
+max_width = 20
 
 [[block]]
 block = "bluetooth"
