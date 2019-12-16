@@ -74,14 +74,6 @@ ip = false
 interval = 5
 
 [[block]]
-block = "music"
-player = "spotify"
-buttons = ["play"]
-marquee_speed = 0.25
-marquee_interval = 3
-max_width = 20
-
-[[block]]
 block = "bluetooth"
 mac = "38:18:4C:3E:95:E8"
 
@@ -89,6 +81,21 @@ mac = "38:18:4C:3E:95:E8"
 block = "sound"
 step_width = 5
 show_volume_when_muted = false
+
+[[block]]
+block = "sound"
+driver = "alsa"
+name = "Capture"
+step_width = 5
+show_volume_when_muted = false
+
+[[block]]
+block = "music"
+player = "spotify"
+buttons = ["play"]
+marquee_speed = 0.25
+marquee_interval = 3
+max_width = 20
 
 [[block]]
 block = "battery"
