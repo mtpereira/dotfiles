@@ -28,11 +28,13 @@ alias p="packer"
 alias s="sudo "
 alias tf="terraform"
 alias v="vagrant"
+alias o="xdg-open"
 
 # Utilities with some sane defaults
 alias rdp="xfreerdp /size:80% /scale:180 /kbd:'United Kingdom Extended' -themes -menu-anims +clipboard"
 alias swapcaps="setxkbmap -option ctrl:swapcaps"
 alias tmux="tmux -2"
+alias dmesg="dmesg -T"
 
 # Custom commands
 alias d-rm="docker ps -a -q -f status=exited | xargs docker rm -v"
