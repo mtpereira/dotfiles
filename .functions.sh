@@ -228,7 +228,7 @@ function network() {
     Provide the network name you wish to connect to.
 
     Options:
-    --vpn: Also start the openvpn client.
+    --vpn: Start the openvpn client.
 EOF
 
   if [ $# -lt 1 ]; then
@@ -296,5 +296,17 @@ function show-layout() {
     layout_name="PT"
   fi
   echo " ${layout_name}"
+}
+
+compdef _network network
+function _network() {
+  _arguments "1:network name:($(ls -1 /etc/netctl/))" \
+    "--vpn[start the openvpn client]"
+}
+
+compdef _headphones headphones
+function _headphones() {
+  local actions=('connect:connect headphones' 'disconnect: disconnect headphones')
+  _describe 'action' actions
 }
 
