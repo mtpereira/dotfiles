@@ -44,6 +44,9 @@ floating_modifier $mod
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="alacritty" --display-binary --use-xdg-de
 bindsym $mod+Shift+d exec dmenu_run
 
+# open a new browser window
+bindsym $mod+n exec firefox
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
