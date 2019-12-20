@@ -253,13 +253,13 @@ EOF
 
   note "Connecting to the ${network_name} network..."
   sudo netctl stop-all \
-    && sudo systemctl stop openvpn-client@protonvpn \
+    && sudo protonvpn disconnect \
     && sudo netctl restart "${network_name}" \
     && sudo systemctl restart systemd-resolved.service
 
   if [ ${vpn} -eq 1 ]; then
-    note "Starting the openvpn client..."
-    sudo systemctl restart openvpn-client@protonvpn
+    note "Establishing the VPN connection..."
+    sudo PVPN_WAIT=10 protonvpn connect --cc SE
   fi
 }
 
