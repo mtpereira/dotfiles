@@ -12,6 +12,11 @@ memory_mem = "  "
 memory_swap = "  "
 
 [[block]]
+block = "custom"
+command = "echo  $(hostname)"
+interval = 3600
+
+[[block]]
 block = "cpu"
 interval = 10
 format = "{utilization}% {frequency} GHz"
