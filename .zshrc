@@ -31,6 +31,7 @@ if ! zgen saved; then
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
   zgen load zsh-users/zsh-syntax-highlighting
+  zgen load zsh-users/zsh-autosuggestions
 
   zgen save
 fi
@@ -52,4 +53,8 @@ eval "$(rbenv init -)"
 
 # rag: configure fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
+
+# rag: configure zsh-autosuggestions
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
