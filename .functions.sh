@@ -172,13 +172,24 @@ function dm-start() {
 ### Ruby ###
 
 function ruby-setup() {
-  if [ $# -lt 1 ] && [ ! -r ./.ruby-version ]; then
-    echo "Usage: $0 [RUBY_VERSION]"
-    echo "Provide a Ruby version on either the first parameter or on a '.ruby-version' file."
+read -r -d '' USAGE <<-EOF
+    Usage: $0 [OPTIONS]
+    Provide a Ruby version on either the first parameter or on a '.ruby-version' file.
+
+    Options:
+    --no-gemset: Do not create a gemset for this setup.
+EOF
+
+  local gemset=1
+  if [ "${1}" != "" ] && [ "${1}" != "--no-gemset" ]; then
+    echo "${USAGE}"
     return 1
+  elif [ "${1}" = "--no-gemset" ]; then
+    gemset=0
   fi
 
-  local ruby_version="${1:-$(cat ./.ruby-version)}"
+
+  local ruby_version="$(cat ./.ruby-version)"
   if [ "${ruby_version}" = "" ]; then
     note "Defaulting to the latest Ruby version."
     ruby_version="latest"
@@ -194,21 +205,20 @@ function ruby-setup() {
 
   # only install if version is not installed already
   if [ "$(rbenv versions | grep ${ruby_version}); echo $?" = "1" ]; then
-    note "Installing Ruby version ${ruby_version}."
+    note "Installing Ruby version ${ruby_version}..."
     rbenv install "$ruby_version" \
       || die "rbenv failed to install version ${ruby_version}!"
   else
     note "Ruby version ${ruby_version} already installed."
   fi
-
-  # write .ruby-version file
-  rbenv local "$ruby_version"
   rbenv rehash
 
-  # create gemset and write .rbenv-gemset file
-  rbenv gemset init
+  if [ ${gemset} -eq 1 ]; then
+    note "Creating the gemset..."
+    rbenv gemset init
+  fi
 
-  note "Installing gems for development."
+  note "Installing gems for development..."
   gem install \
     bundler \
     debase \
@@ -298,11 +308,17 @@ function show-layout() {
   echo " ${layout_name}"
 }
 
+compdef _ruby-setup ruby-setup
+function _ruby-setup() {
+  _arguments "--no-gemset[do not create a getmset]"
+}
+
 compdef _network network
 function _network() {
   _arguments "1:network name:($(ls -1 /etc/netctl/))" \
     "--vpn[start the openvpn client]"
 }
+
 
 compdef _headphones headphones
 function _headphones() {
