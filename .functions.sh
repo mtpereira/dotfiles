@@ -263,13 +263,13 @@ EOF
 
   note "Connecting to the ${network_name} network..."
   sudo netctl stop-all \
-    && sudo protonvpn disconnect \
+    && sudo protonvpn disconnect > /dev/null \
     && sudo netctl restart "${network_name}" \
     && sudo systemctl restart systemd-resolved.service
 
   if [ ${vpn} -eq 1 ]; then
     note "Establishing the VPN connection..."
-    sudo PVPN_WAIT=10 protonvpn connect --cc SE
+    sudo PVPN_WAIT=10 protonvpn connect --cc SE > /dev/null
   fi
 }
 
