@@ -58,6 +58,18 @@ interval = 30
 
 [[block]]
 block = "net"
+device = "wlp2s0"
+hide_missing = true
+hide_inactive = true
+ssid = true
+signal_strength = true
+speed_up = false
+speed_down = false
+ip = false
+interval = 30
+
+[[block]]
+block = "net"
 device = "enp0s20f0u2u3"
 hide_missing = true
 hide_inactive = true
