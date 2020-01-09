@@ -137,6 +137,10 @@ fi
 
 if has zsh; then
   cd $basedir
+  if [ ! -d ~/.oh-my-zsh ]; then
+    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  fi
+
   if [ ! -d ~/.zgen ]; then
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
   fi
