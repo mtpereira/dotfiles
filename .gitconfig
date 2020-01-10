@@ -36,6 +36,7 @@
   pf   = push --force-with-lease
   plk  = !bash -c 'git-crypt lock && git pl && git-crypt unlock <(gpg -qd ~/.secrets/git-crypt.key.gpg)'
   cr   = "!bash -c 'git clone -b ${2} -- ${1} $(echo ${1%%.git} | cut -d / -f2)_${2}_$(date +%Y%m%d%H%M)' -"
+  r    = remote -v
 
 [color]
   ui = auto
