@@ -40,7 +40,13 @@ node_modules/
 **/plan
 **/*.plan
 
-#IntelliJ Idea
+# IntelliJ IDEA
 .idea/
 */out/
 .attach_pid*
+
+# RubyMine
+.generators
+.rakeTasks
+*.iml
+
