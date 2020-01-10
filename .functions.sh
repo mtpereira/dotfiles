@@ -172,7 +172,6 @@ function dm-start() {
 ### Ruby ###
 
 function ruby-setup() {
-set -x
 read -r -d '' USAGE <<-EOF
     Usage: $0 [OPTIONS]
     Provide a Ruby version on either the first parameter or on a '.ruby-version' file.
@@ -223,6 +222,7 @@ EOF
   note "Installing gems for development..."
   gem install \
     bundler \
+    bundler:1.17.3 \
     debase \
     reek \
     rubocop \
