@@ -172,6 +172,7 @@ function dm-start() {
 ### Ruby ###
 
 function ruby-setup() {
+set -x
 read -r -d '' USAGE <<-EOF
     Usage: $0 [OPTIONS]
     Provide a Ruby version on either the first parameter or on a '.ruby-version' file.
@@ -204,7 +205,8 @@ EOF
   fi
 
   # only install if version is not installed already
-  if [ "$(rbenv versions | grep ${ruby_version}); echo $?" = "1" ]; then
+  local is_version_installed="$(rbenv versions | grep ${ruby_version}; echo $?)"
+  if [ "${is_version_installed}" = "1" ]; then
     note "Installing Ruby version ${ruby_version}..."
     rbenv install "$ruby_version" \
       || die "rbenv failed to install version ${ruby_version}!"
