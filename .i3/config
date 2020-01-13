@@ -243,3 +243,6 @@ for_window [class="Slack"] move to workspace number $ws_comm
 for_window [class="zoom"] move to workspace number $ws_comm
 for_window [class="Spotify"] move to workspace number $ws_music
 for_window [class="vlc"] move to workspace number $ws_music
+
+# rag: firefox picture-in-picture set to sticky automatically
+for_window [window_role="PictureInPicture"] sticky enable
