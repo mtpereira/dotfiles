@@ -11,6 +11,7 @@ alias l="exa --sort new --long --git --classify"
 alias la="l -a"
 alias cat="bat"
 alias less="bat --paging=always"
+alias glow="glow --pager"
 
 # Shorthands
 alias a="ansible"
