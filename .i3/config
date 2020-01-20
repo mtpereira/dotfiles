@@ -231,13 +231,13 @@ bindsym $mod+Shift+z sticky toggle
 
 # autostart
 ## password manager
-exec_always --no-startup-id /usr/bin/keepassxc
+exec --no-startup-id /usr/bin/keepassxc
 for_window [class="KeePassXC"] move scratchpad
 bindsym $mod+Ctrl+Shift+k [class="KeePassXC"] scratchpad show
 ## notes
-exec_always --no-startup-id alacritty --title notes --class notes --command /usr/bin/vim ~/notes
-for_window [title="notes"] move scratchpad
-bindsym $mod+Ctrl+Shift+n [title="notes"] scratchpad show
+exec --no-startup-id alacritty --title scratchpad-notes --class notes --command /usr/bin/vim ~/notes
+for_window [title="scratchpad-notes"] move scratchpad
+bindsym $mod+Ctrl+Shift+n [title="scratchpad-notes"] scratchpad show
 
 # auto arrange some specific applications
 for_window [class="Signal"] move to workspace number $ws_comm
