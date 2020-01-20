@@ -168,7 +168,7 @@ for_window [window_role="pop-up"] floating enable
 # workspaces
 bindsym $mod+Ctrl+h workspace prev
 bindsym $mod+Ctrl+l workspace next
-bindsym $mod+Ctrl+b workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # monitor outputs
 bindsym $mod+Mod1+h move workspace to output left
