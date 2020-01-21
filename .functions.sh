@@ -49,17 +49,20 @@ function tputcolors() {
 ### SHELL FILE OPERATIONS ###
 # mkdir && cd
 function mkd() {
-    mkdir "${@}" cd "${1}"
+    mkdir -p "${@}" \
+      && cd "${1}"
 }
 
 # mkdir && mv
 function mkv() {
-    mkdir "${@: 1:1}" && mv -i "${@: 2}" "${@: 1:1}"
+    mkdir -p "${@: 1:1}" \
+      && mv -i "${@: 2}" "${@: 1:1}"
 }
 
 # cp && EDITOR
 function cped () {
-    cp -i "${1}" "${2}" && $EDITOR "${2}"
+    cp -i "${1}" "${2}" \
+      && $EDITOR "${2}"
 }
 
 # symlink
