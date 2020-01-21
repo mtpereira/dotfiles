@@ -129,14 +129,12 @@ if has vim; then
 fi
 
 if has tmux; then
-  cd $basedir
   if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 fi
 
 if has zsh; then
-  cd $basedir
   if [ ! -d ~/.oh-my-zsh ]; then
     git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
   fi
@@ -144,6 +142,13 @@ if has zsh; then
   if [ ! -d ~/.zgen ]; then
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
   fi
+fi
+
+if has rbenv; then
+  mkdir -p "$(rbenv root)/plugins"
+  git clone git://github.com/tpope/rbenv-aliases.git \
+    "$(rbenv root)/plugins/rbenv-aliases"
+  rbenv alias --auto
 fi
 
 note "Running post-install script, if any..."
