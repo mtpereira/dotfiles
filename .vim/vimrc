@@ -11,17 +11,10 @@ set tabstop=2
 set expandtab
 set softtabstop=2
 set shiftwidth=2
-filetype indent on
-set textwidth=80
-set wrapmargin=2
-set breakindent
 set autoread
 " Autosave when running :make tasks
 set autowrite
 set updatetime=100
-
-highlight OverLenght ctermbg=darkred ctermfg=white
-call matchadd ('OverLenght', '\%81v', 100)
 
 fun! StripTrailingWhitespaces()
     let l = line(".")
