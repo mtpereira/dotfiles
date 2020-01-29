@@ -2,7 +2,8 @@ syntax on
 set background=dark
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
-colorscheme solarized
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 set number
 set relativenumber
 
@@ -130,7 +131,7 @@ au FileType go nmap <Leader>e  <Plug>(go-rename)
 
 " lightline (statusbar)
 let g:lightline = {
-      \  'colorscheme': 'powerline',
+      \  'colorscheme': 'monokai_tasty',
       \  'active': {
       \    'left': [ [ 'mode', 'paste' ],
       \              [ 'readonly', 'fugitive', 'modified', 'relativepath', 'ctrlpmark' ],
