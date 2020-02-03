@@ -161,37 +161,173 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Monokai Soda)
-colors:
-  # Default colors
-  primary:
-    background: '0x1a1a1a'
-    foreground: '0xc4c5b5'
+schemes:
+  monokai_dark: &monokai_dark
+  # Colors (Monokai Dark)
+    primary:
+      background: '0x272822'
+      foreground: '0xF8F8F2'
+    # Normal colors
+    normal:
+     black:   '0x272822'
+     red:     '0xF92672'
+     green:   '0xA6E22E'
+     yellow:  '0xF4BF75'
+     blue:    '0x66D9EF'
+     magenta: '0xAE81FF'
+     cyan:    '0xA1EFE4'
+     white:   '0xF8F8F2'
+    # Bright colors
+    bright:
+     black:   '0x75715E'
+     red:     '0xF92672'
+     green:   '0xA6E22E'
+     yellow:  '0xF4BF75'
+     blue:    '0x66D9EF'
+     magenta: '0xAE81FF'
+     cyan:    '0xA1EFE4'
+     white:   '0xF9F8F5'
 
-  # Normal colors
-  normal:
-    black:   '0x1a1a1a'
-    red:     '0xf4005f'
-    green:   '0x98e024'
-    yellow:  '0xfa8419'
-    blue:    '0x9d65ff'
-    magenta: '0xf4005f'
-    cyan:    '0x58d1eb'
-    white:   '0xc4c5b5'
+  monokai_soda: &monokai_soda
+    primary:
+      background: '0x1a1a1a'
+      foreground: '0xc4c5b5'
+    # Normal colors
+    normal:
+      black:   '0x1a1a1a'
+      red:     '0xf4005f'
+      green:   '0x98e024'
+      yellow:  '0xfa8419'
+      blue:    '0x9d65ff'
+      magenta: '0xf4005f'
+      cyan:    '0x58d1eb'
+      white:   '0xc4c5b5'
+    # Bright colors
+    bright:
+      black:   '0x625e4c'
+      red:     '0xf4005f'
+      green:   '0x98e024'
+      yellow:  '0xe0d561'
+      blue:    '0x9d65ff'
+      magenta: '0xf4005f'
+      cyan:    '0x58d1eb'
+      white:   '0xf6f6ef'
 
-  # Bright colors
-  bright:
-    black:   '0x625e4c'
-    red:     '0xf4005f'
-    green:   '0x98e024'
-    yellow:  '0xe0d561'
-    blue:    '0x9d65ff'
-    magenta: '0xf4005f'
-    cyan:    '0x58d1eb'
-    white:   '0xf6f6ef'
+  molokai: &molokai
+    primary:
+      background: '0x1B1D1E'
+      foreground: '0xF8F8F2'
+    # Normal colors
+    normal:
+      black:   '0x333333'
+      red:     '0xC4265E'
+      green:   '0x86B42B'
+      yellow:  '0xB3B42B'
+      blue:    '0x6A7EC8'
+      magenta: '0x8C6BC8'
+      cyan:    '0x56ADBC'
+      white:   '0xE3E3DD'
+    # Bright colors
+    bright:
+      black:   '0x666666'
+      red:     '0xF92672'
+      green:   '0xA6E22E'
+      yellow:  '0xE2E22E'
+      blue:    '0x819AFF'
+      magenta: '0xAE81FF'
+      cyan:    '0x66D9EF'
+      white:   '0xF8F8F2'
 
-# Visual Bell
-#
+  monokai_pro: &monokai_pro
+    primary:
+      background: '0x2D2A2E'
+      foreground: '0xFCFCFA'
+    # Normal colors
+    normal:
+      black:   '0x403E41'
+      red:     '0xFF6188'
+      green:   '0xA9DC76'
+      yellow:  '0xFFD866'
+      blue:    '0xFC9867'
+      magenta: '0xAB9DF2'
+      cyan:    '0x78DCE8'
+      white:   '0xFCFCFA'
+    # Bright colors
+    bright:
+      black:   '0x727072'
+      red:     '0xFF6188'
+      green:   '0xA9DC76'
+      yellow:  '0xFFD866'
+      blue:    '0xFC9867'
+      magenta: '0xAB9DF2'
+      cyan:    '0x78DCE8'
+      white:   '0xFCFCFA'
+  tomorrow_night: &tomorrow_night
+  # Colors (Tomorrow Night)
+    primary:
+      background: '0x1d1f21'
+      foreground: '0xc5c8c6'
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0x1d1f21'
+      cursor: '0xffffff'
+
+    # Normal colors
+    normal:
+      black:   '0x1d1f21'
+      red:     '0xcc6666'
+      green:   '0xb5bd68'
+      yellow:  '0xe6c547'
+      blue:    '0x81a2be'
+      magenta: '0xb294bb'
+      cyan:    '0x70c0ba'
+      white:   '0x373b41'
+
+    # Bright colors
+    bright:
+      black:   '0x666666'
+      red:     '0xff3334'
+      green:   '0x9ec400'
+      yellow:  '0xf0c674'
+      blue:    '0x81a2be'
+      magenta: '0xb77ee0'
+      cyan:    '0x54ced6'
+      white:   '0x282a2e'
+  base16_default_dark: &base16_default_dark
+    primary:
+      background: '0x181818'
+      foreground: '0xd8d8d8'
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0xd8d8d8'
+      cursor: '0xd8d8d8'
+
+    # Normal colors
+    normal:
+      black:   '0x181818'
+      red:     '0xab4642'
+      green:   '0xa1b56c'
+      yellow:  '0xf7ca88'
+      blue:    '0x7cafc2'
+      magenta: '0xba8baf'
+      cyan:    '0x86c1b9'
+      white:   '0xd8d8d8'
+
+    # Bright colors
+    bright:
+      black:   '0x585858'
+      red:     '0xab4642'
+      green:   '0xa1b56c'
+      yellow:  '0xf7ca88'
+      blue:    '0x7cafc2'
+      magenta: '0xba8baf'
+      cyan:    '0x86c1b9'
+      white:   '0xf8f8f8'
+
+colors: *base16_default_dark
+
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
 # default background color. You can control the rate of this transition by

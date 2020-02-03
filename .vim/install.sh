@@ -68,6 +68,7 @@ set_group themes
 package https://github.com/altercation/vim-colors-solarized &
 package https://github.com/itchyny/lightline.vim &
 package https://github.com/patstockwell/vim-monokai-tasty &
+package https://github.com/chriskempson/base16-vim &
 wait
 ) &
 
