@@ -224,8 +224,7 @@ EOF
 
   note "Installing gems for development..."
   gem install \
-    bundler \
-    bundler:1.17.3 \
+    bundler:'~>1' \
     debase \
     reek \
     rubocop \
