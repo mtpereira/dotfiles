@@ -81,7 +81,7 @@ interval = 60
 
 [[block]]
 block = "net"
-device = "tun0"
+device = "proton0"
 hide_missing = true
 hide_inactive = true
 signal_strength = false
