@@ -265,6 +265,11 @@ EOF
     vpn=1
   fi
 
+  if [ ! -f /etc/netctl/"${network_name}" ]; then
+    err "Network \"${network_name}\" not configured!"
+    return 1
+  fi
+
   note "Connecting to the ${network_name} network..."
   sudo netctl stop-all \
     && sudo protonvpn disconnect > /dev/null \
@@ -272,9 +277,23 @@ EOF
     && sudo systemctl restart systemd-resolved.service
 
   if [ ${vpn} -eq 1 ]; then
+    local proton_output
+    local proton_rc
+
     note "Establishing the VPN connection..."
-    sudo PVPN_WAIT=10 protonvpn connect --cc SE > /dev/null
+    proton_output=$(sudo PVPN_WAIT=10 protonvpn connect --cc SE)
+    proton_rc=${?}
+
+    if [ ${proton_rc} -ne 0 ]; then
+      err "Failed to connect to VPN!"
+      echo ${proton_output} | while read line; do
+        err "protonvpn: ${line}"
+      done
+      return 1
+    fi
   fi
+
+
 }
 
 function headphones() {
