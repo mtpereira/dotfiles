@@ -81,6 +81,17 @@ interval = 60
 
 [[block]]
 block = "net"
+device = "enp57s0u1u3"
+hide_missing = true
+hide_inactive = true
+signal_strength = false
+speed_up = false
+speed_down = false
+ip = false
+interval = 60
+
+[[block]]
+block = "net"
 device = "proton0"
 hide_missing = true
 hide_inactive = true
