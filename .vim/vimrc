@@ -2,6 +2,7 @@ syntax on
 set background=dark
 set number
 set relativenumber
+set cursorline
 
 filetype plugin indent on
 set tabstop=2
