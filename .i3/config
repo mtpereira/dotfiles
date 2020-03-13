@@ -180,7 +180,7 @@ bindsym $mod+Mod1+k move workspace to output up
 set $mode_display display: (h) HOME SETUP, (o) OFFICE SETUP, (f/v) DP OFF
 mode "$mode_display" {
     # loki
-    bindsym h exec --no-startup-id "xrandr --output DP-1 --auto --right-of eDP-1 --primary && ~/.fehbg"
+    bindsym h exec --no-startup-id "xrandr --output DP-1 --auto --left-of eDP-1 --primary && ~/.fehbg"
     bindsym f exec --no-startup-id "xrandr --output DP-1 --auto --off && ~/.fehbg"
     # tyr
     bindsym o exec --no-startup-id "xrandr --output DP1 --above eDP-1 --primary && ~/.fehbg"
