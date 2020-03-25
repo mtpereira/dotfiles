@@ -19,9 +19,11 @@
   a      = add
   ap     = add -p
   f      = fetch
-  ps     = push --set-upstream
+  ps     = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+  pf     = ps --force-with-lease
   pst    = !git ps && git ps --tags
   pl     = pull
+  plus   = pull upstream master
   up     = !git pull $@ && git submodule update --init --recursive
   m      = merge
   b      = branch
@@ -34,7 +36,6 @@
   bdm    = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
   bdr    = "!git push origin --delete $@ && git branch -D $@"
   ly     = log --since 'yesterday' --all --abbrev-commit --no-merges --oneline --committer='Manuel Tiago Pereira' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-  pf     = push --force-with-lease
   cr     = "!bash -c 'git clone -b ${2} -- ${1} $(echo ${1%%.git} | cut -d / -f2)_${2}_$(date +%Y%m%d%H%M)' -"
   r      = remote -v
 
