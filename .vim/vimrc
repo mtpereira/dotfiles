@@ -3,6 +3,19 @@ set background=dark
 set number
 set relativenumber
 set cursorline
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes#For_VTE_compatible_terminals_.28urxvt.2C_st.2C_xterm.2C_gnome-terminal_3.x.2C_Konsole_KDE5_and_others.29
+" Set IBeam shape in insert mode, underline shape in replace mode and block
+" shape in normal mode.
+" Cursor settings:
+"  1 -> blinking block
+"  2 -> solid block
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar"
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[1 q"
 
 filetype plugin indent on
 set tabstop=2
