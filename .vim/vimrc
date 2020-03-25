@@ -51,7 +51,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Set spell-checking for certain files
 autocmd FileType gitcommit,markdown,text call SetLocalSpell()
-function SetLocalSpell()
+function! SetLocalSpell()
     setlocal spell
     setlocal complete+=kspell
 endfunction
@@ -82,7 +82,7 @@ if executable('ag')
 endif
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 " Open quickfix restuls in tabs
