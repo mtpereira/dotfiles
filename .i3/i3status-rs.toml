@@ -92,6 +92,17 @@ interval = 60
 
 [[block]]
 block = "net"
+device = "enp0s20f0u1u3"
+hide_missing = true
+hide_inactive = true
+signal_strength = false
+speed_up = false
+speed_down = false
+ip = false
+interval = 60
+
+[[block]]
+block = "net"
 device = "proton0"
 hide_missing = true
 hide_inactive = true
@@ -131,12 +142,21 @@ format = "{percentage}% {time} {power}"
 interval = 60
 
 [[block]]
-block = "time"
-format = "%F %R"
-timezone = "Europe/Lisbon"
+block = "custom"
 interval = 60
+command = "echo  $(date +%F)"
+
+[[block]]
+block = "custom"
+interval = 20
+command = "echo UK $(date +%R)"
+
+[[block]]
+block = "custom"
+interval = 20
+command = "echo JP $(TZ='Japan' date +%R)"
 
 [[block]]
 block = "custom"
 command = "~/.i3/show-layout.sh"
-interval = 30
+interval = 3
