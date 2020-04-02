@@ -12,6 +12,7 @@ alias la="l -a"
 alias cat="bat"
 alias less="bat --paging=always"
 alias glow="glow --pager"
+alias df="df -h"
 
 # Shorthands
 alias a="ansible"
