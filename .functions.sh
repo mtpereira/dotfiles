@@ -1,6 +1,3 @@
-autoload -Uz compinit
-compinit
-
 if [ -d ~/.functions.d/ ]; then
     for file in ~/.functions.d/*.sh; do
         [ -r "${file}" ] && source "${file}"
