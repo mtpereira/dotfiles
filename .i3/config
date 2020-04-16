@@ -1,3 +1,28 @@
+# variables
+## workspaces' names
+set $ws_personal "1:prsn"
+set $ws_work "2:work"
+set $ws_comm "3:comm"
+set $ws_code "4:code"
+set $ws_doc "5:docs"
+set $ws_stuff "6:misc"
+set $ws_cycling "7:cycl"
+set $ws_notes "8:note"
+set $ws_null_0 "9:null"
+set $ws_null_1 "10:null"
+
+## monitors
+set $mon_main DP-1
+set $mon_aux eDP-1
+
+## applications
+set $term /usr/bin/alacritty
+set $wall ~/.fehbg
+set $editor /usr/bin/vim
+
+## screensaver
+set $lock i3lock -c 000000 -e -f && sleep 3
+
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
@@ -20,6 +45,7 @@ new_window normal 0 px
 bar {
     status_command /usr/bin/i3status-rs ~/.i3/i3status-rs.toml
     position bottom
+    tray_output $mon_main
     font pango:Cantarell, Font Awesome 5 Free 8
     colors {
         separator #666666
@@ -32,7 +58,7 @@ bar {
     }
 }
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -41,7 +67,7 @@ bindsym $mod+Shift+Q kill
 floating_modifier $mod
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="alacritty" --display-binary --use-xdg-de
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="$term" --display-binary --use-xdg-de
 bindsym $mod+Shift+d exec dmenu_run
 
 # open a new browser window
@@ -94,20 +120,13 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindcode $mod+d focus child
+# mark window and move it
+bindsym $mod+apostrophe mark --toggle "star"
+bindsym $mod+Shift+apostrophe swap container with mark "star", [con_mark="star"] focus
+bindsym $mod+Mod1+apostrophe [con_mark="star"] focus
 
-# workspaces' names
-set $ws_personal "1:prsn"
-set $ws_work "2:work"
-set $ws_comm "3:comm"
-set $ws_code "4:code"
-set $ws_doc "5:docs"
-set $ws_stuff "6:misc"
-set $ws_cycling "7:cycl"
-set $ws_notes "8:note"
-set $ws_blank3 "9:null"
-set $ws_music "10:bkgr"
+# focus urgent workspace
+bindsym $mod+Mod1+exclam [urgent=latest] focus
 
 # switch to workspace
 bindsym $mod+1 workspace $ws_personal
@@ -118,8 +137,8 @@ bindsym $mod+5 workspace $ws_doc
 bindsym $mod+6 workspace $ws_stuff
 bindsym $mod+7 workspace $ws_cycling
 bindsym $mod+8 workspace $ws_notes
-bindsym $mod+9 workspace $ws_blank3
-bindsym $mod+0 workspace $ws_music
+bindsym $mod+9 workspace $ws_null_0
+bindsym $mod+0 workspace $ws_null_1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws_personal
@@ -130,7 +149,7 @@ bindsym $mod+Shift+5 move container to workspace $ws_doc
 bindsym $mod+Shift+6 move container to workspace $ws_stuff
 bindsym $mod+Shift+7 move container to workspace $ws_cycling
 bindsym $mod+Shift+8 move container to workspace $ws_notes
-bindsym $mod+Shift+9 move container to workspace $ws_blank3
+bindsym $mod+Shift+9 move container to workspace $ws_null
 bindsym $mod+Shift+0 move container to workspace $ws_music
 
 # reload the configuration file
@@ -175,16 +194,14 @@ bindsym $mod+Mod1+h move workspace to output left
 bindsym $mod+Mod1+l move workspace to output right
 bindsym $mod+Mod1+j move workspace to output down
 bindsym $mod+Mod1+k move workspace to output up
+bindsym $mod+Mod1+m [class=".*"] move workspace to output $mon_main
+bindsym $mod+Mod1+a [class=".*"] move workspace to output $mon_aux
 
 # manual management of external displays
-set $mode_display display: (h) HOME SETUP, (o) OFFICE SETUP, (f/v) DP OFF
+set $mode_display display: (h) office, (f) roaming
 mode "$mode_display" {
-    # loki
-    bindsym h exec --no-startup-id "xrandr --output DP-1 --auto --left-of eDP-1 --primary && ~/.fehbg"
-    bindsym f exec --no-startup-id "xrandr --output DP-1 --auto --off && ~/.fehbg"
-    # tyr
-    bindsym o exec --no-startup-id "xrandr --output DP1 --above eDP-1 --primary && ~/.fehbg"
-    bindsym v exec --no-startup-id "xrandr --output DP1 --auto --off && ~/.fehbg"
+    bindsym h exec --no-startup-id xrandr --output $mon_main --auto --left-of $mon_aux --primary && $wall
+    bindsym f exec --no-startup-id xrandr --output $mon_main --off && $wall
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -192,7 +209,7 @@ mode "$mode_display" {
 bindsym $mod+x mode "$mode_display"
 
 # rag: re-apply wallpaper
-bindsym $mod+Shift+w exec --no-startup-id feh --bg-fill ~/.wallpaper.png
+bindsym $mod+Shift+w exec --no-startup-id $wall
 
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
@@ -208,13 +225,12 @@ bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/P
 bindsym $mod+Shift+Print exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
 
 # system lock
-set $Locker i3lock -c 000000 -e -f && sleep 3
 set $mode_system system: (l) lock, (e) logout, (s) suspend, (h) hibernate, (Shift+r) reboot, (Shift+q) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym l exec --no-startup-id $lock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id $lock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $lock && systemctl hibernate, mode "default"
     bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+q exec --no-startup-id systemctl poweroff -i, mode "default"
     # back to normal: Enter or Escape
@@ -235,19 +251,19 @@ exec --no-startup-id /usr/bin/keepassxc
 for_window [class="KeePassXC"] move scratchpad
 bindsym $mod+Ctrl+Shift+k [class="KeePassXC"] scratchpad show
 ## notes
-exec --no-startup-id alacritty --title scratchpad-notes --class notes --command /usr/bin/vim ~/notes
+exec --no-startup-id $term --title scratchpad-notes --class notes --command $editor ~/notes
 for_window [title="scratchpad-notes"] move scratchpad
 bindsym $mod+Ctrl+Shift+n [title="scratchpad-notes"] scratchpad show
 
 # auto arrange some specific applications
-for_window [class="Signal"] move to workspace number $ws_comm
+for_window [class="Signal"] move to workspace number $ws_personal
 for_window [class="code-oss"] move to workspace number $ws_code
 for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code
 for_window [class="jetbrains-goland"] move to workspace number $ws_code
 for_window [class="Slack"] move to workspace number $ws_comm
 for_window [class="zoom"] move to workspace number $ws_comm
-for_window [class="Spotify"] move to workspace number $ws_music
-for_window [class="vlc"] move to workspace number $ws_music
+for_window [class="Spotify"] move to workspace number $ws_personal
+for_window [class="vlc"] move to workspace number $ws_personal
 
 # firefox picture-in-picture set to sticky automatically
 for_window [window_role="PictureInPicture"] sticky enable
