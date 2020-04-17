@@ -1,4 +1,4 @@
-# rag: uncomment for profiling
+# uncomment for profiling
 # uncomment at the end of the file as well
 # zmodload zsh/zprof
 
@@ -13,11 +13,11 @@ setopt HIST_IGNORE_SPACE
 
 source "${HOME}/.zgen/zgen.zsh"
 
-# rag: configure zsh-autosuggestions
+# configure zsh-autosuggestions
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# rag: disable compinit from zgen
+# disable compinit from zgen
 ZGEN_AUTOLOAD_COMPINIT=""
 
 autoload -Uz compinit
@@ -41,13 +41,13 @@ if ! zgen saved; then
   zgen save
 fi
 
-# rag: import shell configurations
+# import shell configurations
 source ~/.env.sh
 source ~/.aliases.sh
 source ~/.functions.sh
 source ~/.completions.sh
 
-# rag: setup asdf
+# setup asdf
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
 
@@ -57,9 +57,13 @@ eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/id_rsa)
 # rag: rbenv init
 eval "$(rbenv init -)"
 
-# rag: configure fzf keybindings
+# configure fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
 
-# rag: uncomment for profiling
+# configure broot
+source /home/rag/.config/broot/launcher/bash/br
+
+# uncomment for profiling
 # uncomment at the top of the file as well
 # zprof
+
