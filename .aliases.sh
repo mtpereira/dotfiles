@@ -7,12 +7,13 @@ fi
 
 # Shell commands
 alias ls="exa -F"
-alias l="exa --sort new --long --git --classify"
+alias l="exa --sort new --long --git --classify --group"
 alias la="l -a"
 alias cat="bat"
 alias less="bat --paging=always"
 alias glow="glow --pager"
 alias df="df -h"
+alias rm="rm -i"
 
 # Shorthands
 alias a="ansible"
