@@ -40,6 +40,22 @@ critical_mem = 95
 critical_swap = 95
 
 [[block]]
+block = "temperature"
+interval = 30
+idle = 50
+collapsed = false
+chip = "coretemp-isa-0000"
+format = "  {max}°"
+
+[[block]]
+block = "temperature"
+interval = 30
+idle = 50
+collapsed = false
+chip = "nvme-pci-7100"
+format = "  {max}°"
+
+[[block]]
 block = "docker"
 interval = 120
 format = "{running}"
