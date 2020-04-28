@@ -50,3 +50,8 @@ node_modules/
 .rakeTasks
 *.iml
 
+# Kotlin
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
