@@ -200,11 +200,8 @@ bindsym $mod+Mod1+a [class=".*"] move workspace to output $mon_aux
 # manual management of external displays
 set $mode_display display: (h) office, (f) roaming
 mode "$mode_display" {
-    bindsym h exec --no-startup-id xrandr --output $mon_main --auto --left-of $mon_aux --primary && $wall
-    bindsym f exec --no-startup-id xrandr --output $mon_main --off && $wall
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym h exec --no-startup-id xrandr --output $mon_main --auto --left-of $mon_aux --primary && $wall, mode "default"
+    bindsym f exec --no-startup-id xrandr --output $mon_main --off && $wall, mode "default"
 }
 bindsym $mod+x mode "$mode_display"
 
