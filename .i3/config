@@ -71,7 +71,7 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="
 bindsym $mod+Shift+d exec dmenu_run
 
 # open a new browser window
-bindsym $mod+n exec firefox
+bindsym $mod+n exec firefox-developer-edition
 
 # change focus
 bindsym $mod+h focus left
@@ -236,11 +236,22 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+P mode "$mode_system"
 
+# dmenu scripts
+set $mode_dmenu_scripts scripts: (e)dit configs, (s)earch web, (t)mux attach
+mode "$mode_dmenu_scripts" {
+    bindsym e exec ~/.dmenu/dmenu-edit-configs.sh, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+E mode "$mode_dmenu_scripts"
+
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-bindsym $mod+Shift+z sticky toggle
+bindsym $mod+Shift+z floating toggle, sticky toggle
 
 # autostart
 ## password manager
