@@ -228,7 +228,8 @@ EOF
     debase \
     reek \
     rubocop \
-    ruby-debug-ide
+    ruby-debug-ide \
+    solargraph
 
   if [ -r ./Gemfile ]; then
     note "Bundelling gems."
