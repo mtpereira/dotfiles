@@ -16,6 +16,8 @@ set $mon_main DP-1
 set $mon_aux eDP-1
 
 ## applications
+set $dmenu j4-dmenu-desktop --dmenu="dmenu -i -b" --term="$term" --display-binary --use-xdg-de
+set $dmenu_run dmenu_run
 set $term /usr/bin/alacritty
 set $wall ~/.fehbg
 set $editor /usr/bin/vim
@@ -67,11 +69,11 @@ bindsym $mod+Shift+Q kill
 floating_modifier $mod
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i" --term="$term" --display-binary --use-xdg-de
-bindsym $mod+Shift+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id $dmenu
+bindsym $mod+Shift+d exec $dmenu_run
 
 # open a new browser window
-bindsym $mod+n exec firefox-developer-edition
+bindsym $mod+n exec firefox
 
 # change focus
 bindsym $mod+h focus left
@@ -239,7 +241,7 @@ bindsym $mod+Shift+P mode "$mode_system"
 # dmenu scripts
 set $mode_dmenu_scripts scripts: (e)dit configs, (s)earch web, (t)mux attach
 mode "$mode_dmenu_scripts" {
-    bindsym e exec ~/.dmenu/dmenu-edit-configs.sh, mode "default"
+    bindsym t exec --no-startup-id ~/.dmenu/tmux-attach.sh, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
