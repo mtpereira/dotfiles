@@ -212,10 +212,10 @@ bindsym $mod+Shift+w exec --no-startup-id $wall
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-# screen brightness
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
 
 # screenshoter
 bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
