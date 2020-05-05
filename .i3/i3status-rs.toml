@@ -145,14 +145,6 @@ step_width = 5
 show_volume_when_muted = false
 
 [[block]]
-block = "music"
-player = "spotify"
-buttons = ["play"]
-marquee_speed = 0.25
-marquee_interval = 3
-max_width = 20
-
-[[block]]
 block = "battery"
 format = "{percentage}% {time} {power}"
 interval = 60
