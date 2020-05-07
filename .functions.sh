@@ -11,15 +11,30 @@ function has() {
 }
 
 function note() {
+  if [ "${1}" = "--notify" ]; then
+    shift 1
+    notify-send --urgency low "${*}"
+  else
     echo "[$(tput bold)$(tput setaf 2) INFO $(tput sgr0)] ${*}"
+  fi
 }
 
 function err() {
+  if [ "${1}" = "--notify" ]; then
+    shift 1
+    notify-send --urgency critical "${*}"
+  else
     echo "[$(tput bold)$(tput setaf 1) ERROR $(tput sgr0)] ${*}"
+  fi
 }
 
 function warn() {
+  if [ "${1}" = "--notify" ]; then
+    shift 1
+    notify-send --urgency normal "${*}"
+  else
     echo "[$(tput bold)$(tput setaf 3) WARNING $(tput sgr0)] ${*}"
+  fi
 }
 
 function die() {
@@ -244,56 +259,72 @@ function network() {
 
     Options:
     --vpn: Start the openvpn client.
+    --notify: Send output via notifications.
 EOF
+
+  local network_name=""
+  local vpn=0
+  local notify=""
 
   if [ $# -lt 1 ]; then
     echo "${USAGE}"
     return 1
   fi
 
-  if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
-    echo "${USAGE}"
-    return 0
-  fi
-
-  local network_name="${1}"
-  local vpn=0
-
-  if [ "${2}" != "" ] && [ "${2}" != "--vpn" ]; then
-    echo "${USAGE}"
-    return 1
-  elif [ "${2}" = "--vpn" ]; then
-    vpn=1
-  fi
+  while [ ! $# -eq 0 ]; do
+    case "${1}" in
+      --help | -h)
+        echo "${USAGE}"
+        return 0
+        ;;
+      --vpn)
+        vpn=1
+        shift 1
+        ;;
+      --notify)
+        notify="--notify"
+        shift 1
+        ;;
+      --* | -*)
+        echo "${USAGE}"
+        return 1
+        ;;
+      *)
+        network_name="${1}"
+        shift 1
+        ;;
+    esac
+  done
 
   if [ ! -f /etc/netctl/"${network_name}" ]; then
-    err "Network \"${network_name}\" not configured!"
+    err "${notify}" "Network \"${network_name}\" not configured!"
     return 1
   fi
 
-  note "Connecting to the ${network_name} network..."
+  note "${notify}" "Connecting to the ${network_name} network..."
   sudo netctl stop-all \
     && sudo protonvpn disconnect > /dev/null \
-    && sudo netctl restart "${network_name}"
+    && sudo netctl restart "${network_name}" \
+    && note "${notify}" "Connected to the ${network_name}."
 
   if [ ${vpn} -eq 1 ]; then
     local proton_output
     local proton_rc
 
-    note "Establishing the VPN connection..."
+    note "${notify}" "Establishing the VPN connection..."
     proton_output=$(sudo PVPN_WAIT=15 protonvpn connect --cc SE)
     proton_rc=${?}
 
     if [ ${proton_rc} -ne 0 ]; then
-      err "Failed to connect to VPN!"
+      err "${notify}" "Failed to connect to VPN!"
       echo ${proton_output} | while read line; do
-        err "protonvpn: ${line}"
+        err "${notify}" "protonvpn: ${line}"
       done
       return 1
+    else
+      note "${notify}" "Connected to the VPN."
     fi
   fi
-
-
 }
 
 function headphones() {
@@ -328,7 +359,8 @@ function _ruby-setup() {
 compdef _network network
 function _network() {
   _arguments "1:network name:($(ls -1 /etc/netctl/))" \
-    "--vpn[start the openvpn client]"
+    "--vpn[start the openvpn client]" \
+    "--notify[send output via notifications]"
 }
 
 
