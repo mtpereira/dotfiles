@@ -239,8 +239,9 @@ mode "$mode_system" {
 bindsym $mod+Shift+P mode "$mode_system"
 
 # dmenu scripts
-set $mode_dmenu_scripts scripts: (n)etwork connection, (t)mux attach, (v)pn connection
+set $mode_dmenu_scripts scripts: (h)eadphones toggle, (n)etwork connection, (t)mux attach, (v)pn toggle
 mode "$mode_dmenu_scripts" {
+    bindsym h exec --no-startup-id ~/.dmenu/headphones.sh, mode "default"
     bindsym t exec --no-startup-id ~/.dmenu/tmux-attach.sh, mode "default"
     bindsym n exec --no-startup-id ~/.dmenu/network.sh, mode "default"
     bindsym v exec --no-startup-id ~/.dmenu/network.sh --vpn, mode "default"
