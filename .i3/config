@@ -210,6 +210,10 @@ bindsym $mod+x mode "$mode_display"
 # rag: re-apply wallpaper
 bindsym $mod+Shift+w exec --no-startup-id $wall
 
+# screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
