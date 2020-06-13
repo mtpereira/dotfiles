@@ -204,6 +204,10 @@ set $mode_display display: (h) office, (f) roaming
 mode "$mode_display" {
     bindsym h exec --no-startup-id xrandr --output $mon_main --auto --left-of $mon_aux --primary && $wall, mode "default"
     bindsym f exec --no-startup-id xrandr --output $mon_main --off && $wall, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_display"
 
