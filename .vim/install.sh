@@ -75,7 +75,7 @@ wait
 (
 set_group files
 package https://github.com/scrooloose/nerdtree &
-package https://github.com/ctrlpvim/ctrlp.vim &
+package https://github.com/junegunn/fzf.vim &
 wait
 ) &
 
