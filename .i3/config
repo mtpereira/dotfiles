@@ -283,7 +283,6 @@ for_window [class="code-oss"] move to workspace number $ws_code
 for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code
 for_window [class="jetbrains-goland"] move to workspace number $ws_code
 for_window [class="Slack"] move to workspace number $ws_comm
-for_window [class="zoom"] move to workspace number $ws_comm
 for_window [class="Spotify"] move to workspace number $ws_personal
 for_window [class="vlc"] move to workspace number $ws_personal
 
