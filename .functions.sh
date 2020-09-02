@@ -110,6 +110,11 @@ function man() {
     man "$@"
   }
 
+# copy file contents to xclipboard
+function copy() {
+  /bin/cat "${1}" | xsel
+}
+
 ### SHELL UTILS ###
 # source .bashrc
 function resource() {
