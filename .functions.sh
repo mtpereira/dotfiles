@@ -1,10 +1,3 @@
-if [ -d ~/.functions.d/ ]; then
-    for file in ~/.functions.d/*.sh; do
-        [ -r "${file}" ] && source "${file}"
-    done
-    unset file
-fi
-
 ### SCRIPTING UTILS ###
 function has() {
     return $(which ${1} >/dev/null)
@@ -252,6 +245,11 @@ EOF
   fi
 }
 
+compdef _ruby-setup ruby-setup
+function _ruby-setup() {
+  _arguments "--no-gemset[do not create a getmset]"
+}
+
 function network() {
   read -r -d '' USAGE <<-EOF
     Usage: ${0} NETWORK_NAME [OPTIONS]
@@ -327,6 +325,13 @@ EOF
   fi
 }
 
+compdef _network network
+function _network() {
+  _arguments "1:network name:($(ls -1 /etc/netctl/))" \
+    "--vpn[start the openvpn client]" \
+    "--notify[send output via notifications]"
+}
+
 function headphones() {
   read -r -d '' USAGE <<-EOF
     Manage connection to bluetooth headphones.
@@ -351,22 +356,16 @@ EOF
   unset COMMANDS
 }
 
-compdef _ruby-setup ruby-setup
-function _ruby-setup() {
-  _arguments "--no-gemset[do not create a getmset]"
-}
-
-compdef _network network
-function _network() {
-  _arguments "1:network name:($(ls -1 /etc/netctl/))" \
-    "--vpn[start the openvpn client]" \
-    "--notify[send output via notifications]"
-}
-
-
 compdef _headphones headphones
 function _headphones() {
   local actions=('connect:connect headphones' 'disconnect: disconnect headphones')
   _describe 'action' actions
 }
+
+if [ -d ~/.functions.d/ ]; then
+    for file in ~/.functions.d/*.sh; do
+        [ -r "${file}" ] && source "${file}"
+    done
+    unset file
+fi
 
