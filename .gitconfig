@@ -7,7 +7,7 @@
   tool = vimdiff
 
 [alias]
-  ci     = commit --verbose
+  ci     = commit --verbose --edit --message
   cam    = commit --amend
   st     = status
   s      = status -s -b
