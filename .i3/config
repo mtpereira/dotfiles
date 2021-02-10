@@ -163,13 +163,13 @@ bindsym $mod+Shift+R restart
 set $mode_resize resize: (Shift +) h / j / k / l
 mode "$mode_resize" {
     bindsym h resize shrink width 3 px or 3 ppt
-    bindsym j resize grow height 3 px or 3 ppt
-    bindsym k resize shrink height 3 px or 3 ppt
+    bindsym k resize grow height 3 px or 3 ppt
+    bindsym j resize shrink height 3 px or 3 ppt
     bindsym l resize grow width 3 px or 3 ppt
 
     bindsym Shift+h resize shrink width 30 px or 30 ppt
-    bindsym Shift+j resize grow height 30 px or 30 ppt
-    bindsym Shift+k resize shrink height 30 px or 30 ppt
+    bindsym Shift+k resize grow height 30 px or 30 ppt
+    bindsym Shift+j resize shrink height 30 px or 30 ppt
     bindsym Shift+l resize grow width 30 px or 30 ppt
 
     # back to normal: Enter or Escape
