@@ -8,8 +8,8 @@ set $ws_doc "5:docs"
 set $ws_stuff "6:misc"
 set $ws_cycling "7:cycl"
 set $ws_notes "8:note"
-set $ws_null_0 "9:null"
-set $ws_null_1 "10:null"
+set $ws_null "9:null"
+set $ws_aux "10:aux"
 
 ## monitors
 set $mon_main DP-1
@@ -139,8 +139,8 @@ bindsym $mod+5 workspace $ws_doc
 bindsym $mod+6 workspace $ws_stuff
 bindsym $mod+7 workspace $ws_cycling
 bindsym $mod+8 workspace $ws_notes
-bindsym $mod+9 workspace $ws_null_0
-bindsym $mod+0 workspace $ws_null_1
+bindsym $mod+9 workspace $ws_null
+bindsym $mod+0 workspace $ws_aux
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws_personal
@@ -151,8 +151,8 @@ bindsym $mod+Shift+5 move container to workspace $ws_doc
 bindsym $mod+Shift+6 move container to workspace $ws_stuff
 bindsym $mod+Shift+7 move container to workspace $ws_cycling
 bindsym $mod+Shift+8 move container to workspace $ws_notes
-bindsym $mod+Shift+9 move container to workspace $ws_null_0
-bindsym $mod+Shift+0 move container to workspace $ws_null_1
+bindsym $mod+Shift+9 move container to workspace $ws_null
+bindsym $mod+Shift+0 move container to workspace $ws_aux
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -286,6 +286,9 @@ for_window [class="jetbrains-goland"] move to workspace number $ws_code
 for_window [class="Slack"] move to workspace number $ws_comm
 for_window [class="Spotify"] move to workspace number $ws_personal
 for_window [class="vlc"] move to workspace number $ws_personal
+for_window [class="zoom"] move to workspace number $ws_comm
+for_window [title="Zoom - Licensed Account"] move to workspace number $ws_aux
+for_window [class="pavucontrol"] move to workspace number $ws_aux
 
 # firefox picture-in-picture set to sticky automatically
 for_window [window_role="PictureInPicture"] sticky enable
