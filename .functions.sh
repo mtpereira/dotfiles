@@ -41,6 +41,12 @@ function path_add() {
   fi
 }
 
+function path_remove() {
+  if [[ "$PATH" == *""* ]]; then
+    PATH="${PATH//$1:/}"
+  fi
+}
+
 # tput helper
 # Taken from: (http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/)
 function tputcolors() {
