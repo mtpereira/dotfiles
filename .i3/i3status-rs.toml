@@ -19,7 +19,7 @@ interval = 3600
 [[block]]
 block = "cpu"
 interval = 10
-format = "{utilization}% {frequency} GHz"
+format = "{utilization} {frequency}"
 
 [[block]]
 block = "load"
