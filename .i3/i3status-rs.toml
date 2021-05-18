@@ -28,8 +28,8 @@ format = "{1m} {5m} {15m}"
 
 [[block]]
 block = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used_percents}%"
+format_swap = "{swap_used_percents}%"
 display_type = "memory"
 icons = true
 clickable = true
@@ -65,34 +65,22 @@ block = "net"
 device = "wlp58s0"
 hide_missing = true
 hide_inactive = true
-ssid = true
-signal_strength = true
-speed_up = false
-speed_down = false
-ip = false
 interval = 30
+format = "{ssid} {signal_strength}"
 
 [[block]]
 block = "net"
 device = "wlp2s0"
 hide_missing = true
 hide_inactive = true
-ssid = true
-signal_strength = true
-speed_up = false
-speed_down = false
-ip = false
 interval = 30
+format = "{ssid} {signal_strength}"
 
 [[block]]
 block = "net"
 device = "enp0s20f0u2u3"
 hide_missing = true
 hide_inactive = true
-signal_strength = false
-speed_up = false
-speed_down = false
-ip = false
 interval = 60
 
 [[block]]
@@ -100,10 +88,6 @@ block = "net"
 device = "enp57s0u1u3"
 hide_missing = true
 hide_inactive = true
-signal_strength = false
-speed_up = false
-speed_down = false
-ip = false
 interval = 60
 
 [[block]]
@@ -111,10 +95,6 @@ block = "net"
 device = "enp0s20f0u1u3"
 hide_missing = true
 hide_inactive = true
-signal_strength = false
-speed_up = false
-speed_down = false
-ip = false
 interval = 60
 
 [[block]]
@@ -122,10 +102,6 @@ block = "net"
 device = "proton0"
 hide_missing = true
 hide_inactive = true
-signal_strength = false
-speed_up = false
-speed_down = false
-ip = false
 interval = 5
 
 [[block]]
