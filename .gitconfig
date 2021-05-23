@@ -8,6 +8,7 @@
 
 [alias]
   ci     = commit --verbose --edit --message
+  fix    = commit --verbose --fixup
   cam    = commit --amend
   st     = status
   s      = status -s -b
