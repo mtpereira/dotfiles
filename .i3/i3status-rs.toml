@@ -28,8 +28,8 @@ format = "{1m} {5m} {15m}"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used_percents}%"
-format_swap = "{swap_used_percents}%"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
 display_type = "memory"
 icons = true
 clickable = true
@@ -45,7 +45,7 @@ interval = 30
 idle = 50
 collapsed = false
 chip = "coretemp-isa-0000"
-format = "  {max}°"
+format = "  {max}"
 
 [[block]]
 block = "temperature"
@@ -53,7 +53,7 @@ interval = 30
 idle = 50
 collapsed = false
 chip = "nvme-pci-7100"
-format = "  {max}°"
+format = "  {max}"
 
 [[block]]
 block = "docker"
