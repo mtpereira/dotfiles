@@ -122,7 +122,7 @@ show_volume_when_muted = false
 
 [[block]]
 block = "battery"
-format = "{percentage}% {time} {power}w"
+format = "{percentage} {time} {power}"
 interval = 60
 
 [[block]]
