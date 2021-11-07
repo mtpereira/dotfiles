@@ -128,6 +128,10 @@ if has vim; then
   ./.vim/install.sh
 fi
 
+if has redshift; then
+  link $basedir/.redshift.conf $HOME/.redshift.conf
+fi
+
 if has tmux; then
   if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
