@@ -3,7 +3,7 @@
 # *Highly* inspired (ripped-off) from https://github.com/statico/dotfiles
 #
 # Usage:
-#   curl http://github.com/statico/dotfiles/raw/master/install.sh | sh
+#   curl http://github.com/mtpereira/dotfiles/raw/main/install.sh | sh
 #
 # or:
 #
@@ -16,7 +16,7 @@ set -eu
 basedir=$HOME/.dotfiles
 bindir=$HOME/bin
 gitbase=git://github.com/mtpereira/dotfiles.git
-tarball=http://github.com/mtpereira/dotfiles/tarball/master
+tarball=http://github.com/mtpereira/dotfiles/tarball/main
 
 function has() {
     return $(which $1 >/dev/null)
