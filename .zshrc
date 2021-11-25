@@ -51,8 +51,8 @@ source ~/.completions.sh
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
 
-# rag: start keychain
-eval $(keychain --quiet --quick --eval --agents gpg,ssh ~/.ssh/id_rsa)
+# start keychain
+eval $(keychain --quiet --quick --eval --agents gpg,ssh id_rsa asgard ${GPGKEY})
 
 # rag: rbenv init
 eval "$(rbenv init -)"
