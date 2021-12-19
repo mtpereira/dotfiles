@@ -305,6 +305,7 @@ EOF
     esac
   done
 
+  local proton_service="openvpn-client@protonvpn.service"
   if [ ! -f /etc/netctl/"${network_name}" ]; then
     err "${notify}" "Network \"${network_name}\" not configured!"
     return 1
@@ -312,7 +313,7 @@ EOF
 
   note "${notify}" "Connecting to the ${network_name} network..."
   sudo netctl stop-all \
-    && sudo protonvpn disconnect > /dev/null \
+    && sudo systemctl stop ${proton_service} \
     && sudo netctl restart "${network_name}" \
     && note "${notify}" "Connected to the ${network_name}."
 
@@ -321,18 +322,22 @@ EOF
     local proton_rc
 
     note "${notify}" "Establishing the VPN connection..."
-    proton_output=$(sudo PVPN_WAIT=15 protonvpn connect --cc SE)
-    proton_rc=${?}
+    sudo systemctl restart ${proton_service}
 
-    if [ ${proton_rc} -ne 0 ]; then
-      err "${notify}" "Failed to connect to VPN!"
-      echo ${proton_output} | while read line; do
-        err "${notify}" "protonvpn: ${line}"
-      done
-      return 1
-    else
-      note "${notify}" "Connected to the VPN."
-    fi
+    local proton_rc=$(systemctl show ${proton_service} | grep 'ExecMainStatus=' | cut -d'=' -f2)
+    local proton_retries=0
+    while [ ${proton_rc} -ne 0 ]; do
+      if [ ${proton_retries} -lt 3 ]; then
+        note "${notify}" "Failed to connect to VPN, retrying..."
+        proton_retries=$((proton_retries + 1))
+        sleep 3
+      else
+        proton_output=$(journalctl -xeu ${proton_service} | tail -n 3)
+        err "${notify}" "Failed to connect to VPN! Check \`systemctl status ${proton_service}\`"
+        return 1
+      fi
+    done
+    note "${notify}" "Connected to the VPN."
   fi
 }
 
