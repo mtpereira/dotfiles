@@ -99,7 +99,7 @@ interval = 60
 
 [[block]]
 block = "net"
-device = "proton0"
+device = "tun0"
 hide_missing = true
 hide_inactive = true
 interval = 5
