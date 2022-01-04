@@ -279,7 +279,7 @@ for_window [title="scratchpad-notes"] move scratchpad
 bindsym $mod+Ctrl+Shift+n [title="scratchpad-notes"] scratchpad show
 
 # auto arrange some specific applications
-for_window [class="Signal"] move to workspace number $ws_personal
+for_window [class="Signal"] move to workspace number $ws_comm
 for_window [class="code-oss"] move to workspace number $ws_code
 for_window [class="jetbrains-idea-ce"] move to workspace number $ws_code
 for_window [class="jetbrains-goland"] move to workspace number $ws_code
