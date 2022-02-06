@@ -124,6 +124,8 @@ show_volume_when_muted = false
 block = "battery"
 format = "{percentage} {time} {power}"
 interval = 60
+device = "BAT0"
+driver = "sysfs"
 
 [[block]]
 block = "custom"
