@@ -26,6 +26,7 @@ set $editor /usr/bin/vim
 set $lock i3lock -c 000000 -e -f && sleep 3
 
 set $mod Mod4
+set $alt Mod1
 
 # font for window titles. ISO 10646 = Unicode
 font pango:Cantarell 8
@@ -125,10 +126,10 @@ bindsym $mod+a focus parent
 # mark window and move it
 bindsym $mod+apostrophe mark --toggle "star"
 bindsym $mod+Shift+apostrophe swap container with mark "star", [con_mark="star"] focus
-bindsym $mod+Mod1+apostrophe [con_mark="star"] focus
+bindsym $mod+$alt+apostrophe [con_mark="star"] focus
 
 # focus urgent workspace
-bindsym $mod+Mod1+exclam [urgent=latest] focus
+bindsym $mod+$alt+exclam [urgent=latest] focus
 
 # switch to workspace
 bindsym $mod+1 workspace $ws_personal
@@ -192,12 +193,12 @@ bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # monitor outputs
-bindsym $mod+Mod1+h move workspace to output left
-bindsym $mod+Mod1+l move workspace to output right
-bindsym $mod+Mod1+j move workspace to output down
-bindsym $mod+Mod1+k move workspace to output up
-bindsym $mod+Mod1+m [class=".*"] move workspace to output $mon_main
-bindsym $mod+Mod1+a [class=".*"] move workspace to output $mon_aux
+bindsym $mod+$alt+h move workspace to output left
+bindsym $mod+$alt+l move workspace to output right
+bindsym $mod+$alt+j move workspace to output down
+bindsym $mod+$alt+k move workspace to output up
+bindsym $mod+$alt+m [class=".*"] move workspace to output $mon_main
+bindsym $mod+$alt+a [class=".*"] move workspace to output $mon_aux
 
 # manual management of external displays
 set $mode_display display: (h) office, (l) living room, (f) roaming
@@ -273,6 +274,7 @@ bindsym $mod+Shift+z floating toggle, sticky toggle
 exec --no-startup-id /usr/bin/keepassxc
 for_window [class="KeePassXC"] move scratchpad
 bindsym $mod+Ctrl+Shift+k [class="KeePassXC"] scratchpad show
+bindsym $mod+Ctrl+Shift+$alt+k [class="KeePassXC"] scratchpad show
 ## notes
 exec --no-startup-id $term --title scratchpad-notes --class notes --command $editor ~/notes
 for_window [title="scratchpad-notes"] move scratchpad
