@@ -188,17 +188,15 @@ for_window [window_role="pop-up"] floating enable
 
 # rag: binds
 # workspaces
-bindsym $mod+Ctrl+h workspace prev
-bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # monitor outputs
-bindsym $mod+$alt+h move workspace to output left
-bindsym $mod+$alt+l move workspace to output right
-bindsym $mod+$alt+j move workspace to output down
-bindsym $mod+$alt+k move workspace to output up
-bindsym $mod+$alt+m [class=".*"] move workspace to output $mon_main
-bindsym $mod+$alt+a [class=".*"] move workspace to output $mon_aux
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+m [class=".*"] move workspace to output $mon_main
+bindsym $mod+Ctrl+a [class=".*"] move workspace to output $mon_aux
 
 # manual management of external displays
 set $mode_display display: (h) office, (l) living room, (f) roaming
