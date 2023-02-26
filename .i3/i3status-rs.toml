@@ -1,11 +1,11 @@
 [theme]
-name = "slick"
+theme = "slick"
 [theme.overrides]
 alternating_tint_bg = "#000000"
 alternating_tint_fg = "#000000"
 
 [icons]
-name = "awesome"
+icons = "awesome6"
 [icons.overrides]
 cpu = "  "
 memory_mem = "  "
@@ -14,25 +14,22 @@ memory_swap = "  "
 [[block]]
 block = "custom"
 command = "echo  $(hostname)"
-interval = 3600
+interval = "once"
 
 [[block]]
 block = "cpu"
 interval = 10
-format = "{utilization} {frequency}"
+format = " $icon $utilization "
+# format = "{utilization} {frequency}"
 
 [[block]]
 block = "load"
 interval = 10
-format = "{1m} {5m} {15m}"
+format = " $icon $1m.eng(w:4) $5m.eng(w:4) $15m.eng(w:4) "
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
-display_type = "memory"
-icons = true
-clickable = true
+format = " $icon $mem_used_percents.eng(w:1) "
 interval = 10
 warning_mem = 80
 warning_swap = 80
@@ -43,70 +40,45 @@ critical_swap = 95
 block = "temperature"
 interval = 30
 idle = 50
-collapsed = false
 chip = "coretemp-isa-0000"
-format = "  {max}"
+format = " $icon $max "
 
 [[block]]
 block = "temperature"
 interval = 30
 idle = 50
-collapsed = false
 chip = "nvme-pci-7100"
-format = "  {max}"
+format = " $icon $max "
 
 [[block]]
 block = "docker"
 interval = 120
-format = "{running}"
+format = " $icon $running "
 
 [[block]]
 block = "net"
-device = "wlp58s0"
-hide_missing = true
-hide_inactive = true
+device = "wlp[0-9]+s0"
 interval = 30
-format = "{ssid} {signal_strength}"
+format = " $icon {$signal_strength $ssid $frequency|} $device "
+missing_format = ""
 
 [[block]]
 block = "net"
-device = "wlp2s0"
-hide_missing = true
-hide_inactive = true
-interval = 30
-format = "{ssid} {signal_strength}"
-
-[[block]]
-block = "net"
-device = "enp0s20f0u2u3"
-hide_missing = true
-hide_inactive = true
+device = "enp[0-9]{2}s[0-9](0f0)*u[0-9]u[0-9]"
 interval = 60
-
-[[block]]
-block = "net"
-device = "enp57s0u1u3"
-hide_missing = true
-hide_inactive = true
-interval = 60
-
-[[block]]
-block = "net"
-device = "enp0s20f0u1u3"
-hide_missing = true
-hide_inactive = true
-interval = 60
+missing_format = ""
 
 [[block]]
 block = "net"
 device = "tun0"
-hide_missing = true
-hide_inactive = true
 interval = 5
+missing_format = ""
 
 [[block]]
 block = "bluetooth"
 mac = "38:18:4C:3E:95:E8"
+format = " $icon $percentage "
+disconnected_format = ""
 
 [[block]]
 block = "sound"
@@ -122,25 +94,16 @@ show_volume_when_muted = false
 
 [[block]]
 block = "battery"
-format = "{percentage} {time} {power}"
+format = " $icon $percentage $time "
 interval = 60
 device = "BAT0"
 driver = "sysfs"
 
 [[block]]
-block = "custom"
-interval = 60
-command = "echo  $(date +%F)"
-
-[[block]]
-block = "custom"
-interval = 20
-command = "echo UK $(date +%R)"
-
-[[block]]
-block = "custom"
-interval = 20
-command = "echo JP $(TZ='Japan' date +%R)"
+block = "time"
+interval = 5
+[block.format]
+full = " $icon $timestamp.datetime(f:'%a %Y-%m-%d %R') "
 
 [[block]]
 block = "custom"
