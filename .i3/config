@@ -6,7 +6,7 @@ set $ws_comm "3:comm"
 set $ws_code "4:code"
 set $ws_doc "5:docs"
 set $ws_stuff "6:misc"
-set $ws_cycling "7:cycl"
+set $ws_music "7:musi"
 set $ws_notes "8:note"
 set $ws_null "9:null"
 set $ws_aux "10:aux"
@@ -138,7 +138,7 @@ bindsym $mod+3 workspace $ws_comm
 bindsym $mod+4 workspace $ws_code
 bindsym $mod+5 workspace $ws_doc
 bindsym $mod+6 workspace $ws_stuff
-bindsym $mod+7 workspace $ws_cycling
+bindsym $mod+7 workspace $ws_music
 bindsym $mod+8 workspace $ws_notes
 bindsym $mod+9 workspace $ws_null
 bindsym $mod+0 workspace $ws_aux
@@ -150,7 +150,7 @@ bindsym $mod+Shift+3 move container to workspace $ws_comm
 bindsym $mod+Shift+4 move container to workspace $ws_code
 bindsym $mod+Shift+5 move container to workspace $ws_doc
 bindsym $mod+Shift+6 move container to workspace $ws_stuff
-bindsym $mod+Shift+7 move container to workspace $ws_cycling
+bindsym $mod+Shift+7 move container to workspace $ws_music
 bindsym $mod+Shift+8 move container to workspace $ws_notes
 bindsym $mod+Shift+9 move container to workspace $ws_null
 bindsym $mod+Shift+0 move container to workspace $ws_aux
