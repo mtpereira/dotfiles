@@ -45,7 +45,7 @@ format = " $icon $max "
 
 [[block]]
 block = "temperature"
-interval = 30
+interval = 10
 idle = 50
 chip = "nvme-pci-7100"
 format = " $icon $max "
