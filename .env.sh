@@ -16,6 +16,7 @@ path_add $HOME/.rbenv/bin
 path_add $GOPATH/bin
 path_add $HOME/go/bin
 path_add $GOENV_ROOT/bin
+path_add $HOME/.cargo/bin
 
 if [ -d ~/.env.d/ ]; then
     for file in ~/.env.d/*.sh; do
