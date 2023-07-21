@@ -77,7 +77,6 @@ missing_format = ""
 [[block]]
 block = "bluetooth"
 mac = "38:18:4C:3E:95:E8"
-format = " $icon $percentage "
 disconnected_format = ""
 
 [[block]]
