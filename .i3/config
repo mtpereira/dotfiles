@@ -264,19 +264,17 @@ bindsym $mod+Shift+E mode "$mode_dmenu_scripts"
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
-bindsym $mod+Shift+z floating toggle, sticky toggle
+bindsym $mod+Shift+Z floating toggle, sticky toggle
 
 # autostart
 ## password manager
 exec --no-startup-id /usr/bin/keepassxc
 for_window [class="KeePassXC"] move scratchpad
-bindsym $mod+Ctrl+Shift+k [class="KeePassXC"] scratchpad show
 bindsym $mod+Ctrl+Shift+$alt+k [class="KeePassXC"] scratchpad show
 ## notes
-exec --no-startup-id $term --title scratchpad-notes --class notes --command $editor ~/notes
-for_window [title="scratchpad-notes"] move scratchpad
-bindsym $mod+Ctrl+Shift+n [title="scratchpad-notes"] scratchpad show
+exec --no-startup-id /usr/bin/obsidian
+for_window [class="obsidian"] move scratchpad
+bindsym $mod+Ctrl+Shift+$alt+n [class="obsidian"] scratchpad show
 
 # auto arrange some specific applications
 for_window [class="Signal"] move to workspace number $ws_comm
