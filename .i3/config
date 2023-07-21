@@ -228,8 +228,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 # screenshoter
-bindsym --release $mod+Print exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
-bindsym $mod+Shift+Print exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
+bindsym --release $mod+Shift+T exec scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
+bindsym $mod+Ctrl+T exec scrot -u '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/screenshots/$f'
 
 # system lock
 set $mode_system system: (l) lock, (e) logout, (s) suspend, (h) hibernate, (Shift+r) reboot, (Shift+q) shutdown
