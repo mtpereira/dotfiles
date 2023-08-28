@@ -20,7 +20,6 @@ interval = "once"
 block = "cpu"
 interval = 10
 format = " $icon $utilization "
-# format = "{utilization} {frequency}"
 
 [[block]]
 block = "load"
@@ -38,17 +37,15 @@ critical_swap = 95
 
 [[block]]
 block = "temperature"
-interval = 30
+interval = 10
 idle = 50
 chip = "coretemp-isa-0000"
 format = " $icon $max "
 
 [[block]]
-block = "temperature"
+block = "custom"
+command = "echo  $(i8kctl speed | cut -d' ' -f2) RPM"
 interval = 10
-idle = 50
-chip = "nvme-pci-3c00"
-format = " $icon $max "
 
 [[block]]
 block = "docker"
