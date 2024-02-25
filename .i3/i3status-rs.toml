@@ -74,7 +74,7 @@ missing_format = ""
 [[block]]
 block = "bluetooth"
 mac = "38:18:4C:3E:95:E8"
-disconnected_format = ""
+disconnected_format = "📶"
 
 [[block]]
 block = "sound"
