@@ -1,5 +1,5 @@
 # Shell commands
-alias ls="exa -F"
+alias ls="eza -F"
 alias l="exa --sort new --long --git --classify --group"
 alias la="l -a"
 alias cat="bat"
