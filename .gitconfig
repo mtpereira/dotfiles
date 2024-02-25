@@ -15,8 +15,11 @@
   l      = log --graph --decorate --pretty=oneline --abbrev-commit
   df     = diff
   co     = checkout
+  sw     = switch
   cob    = checkout -b
+  swb    = switch -c
   cos    = "!git stash && git fetch && git checkout $@ ; git stash pop"
+  re     = restore --
   a      = add
   ap     = add -p
   f      = fetch
