@@ -30,7 +30,7 @@ set $alt Mod1
 
 # hide title bar
 default_border pixel 1
-default_floating_border pixel 1
+default_floating_border normal
 # font for window titles. ISO 10646 = Unicode
 font pango:Cantarell 8
 
