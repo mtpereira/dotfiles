@@ -1,5 +1,5 @@
 [theme]
-theme = "slick"
+theme = "ctp-mocha"
 [theme.overrides]
 alternating_tint_bg = "#000000"
 alternating_tint_fg = "#000000"
