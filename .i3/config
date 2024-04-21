@@ -49,7 +49,7 @@ bar {
     status_command /usr/bin/i3status-rs ~/.i3/i3status-rs.toml
     position bottom
     tray_output $mon_main
-    font pango:Cantarell, Font Awesome 5 Free 8
+    font pango:Cantarell, Font Awesome 6 Free 8
     colors {
         separator #666666
         background #444444
