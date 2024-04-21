@@ -63,7 +63,7 @@ set $mantle #181825
 set $crust #11111b
 
 # target                 title     bg    text   indicator  border
-client.focused           $base     $pink $base  $rosewater $lavender
+client.focused           $base     $lavender    $base      $rosewater
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
 client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
@@ -82,9 +82,9 @@ bar {
             statusline         $text
             focused_statusline $text
             focused_separator  $base
-            # <colorclass> <border> <background> <text>
-            focused_workspace  $pink $pink $base
-            active_workspace   $base $base $pink
+            # <colorclass>     <border> <background> <text>
+            focused_workspace  $lavender $lavender $base
+            active_workspace   $base $base $lavender
             inactive_workspace $base $base $surface1
             urgent_workspace   $base $base $surface1
             binding_mode       $base $base $surface1
