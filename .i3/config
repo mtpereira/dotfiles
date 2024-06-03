@@ -82,12 +82,12 @@ bar {
             statusline         $text
             focused_statusline $text
             focused_separator  $base
-            # <colorclass>     <border> <background> <text>
+            # <colorclass>     <border>  <bg>      <text>
             focused_workspace  $lavender $lavender $base
-            active_workspace   $base $base $lavender
-            inactive_workspace $base $base $surface1
-            urgent_workspace   $base $base $surface1
-            binding_mode       $base $base $surface1
+            active_workspace   $base     $base     $lavender
+            inactive_workspace $base     $base     $surface1
+            urgent_workspace   $base     $orange   $surface1
+            binding_mode       $lavender $base     $peach
     }
 }
 
