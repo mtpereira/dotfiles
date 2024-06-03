@@ -1,69 +1,85 @@
-# uncomment for profiling
-# uncomment at the end of the file as well
-# zmodload zsh/zprof
+## zinit and prompt plugin
 
-DEFAULT_USER="rag"
-CASE_SENSITIVE="false"
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="false"
-HIST_STAMPS="yyyy-mm-dd"
-
-setopt HIST_IGNORE_SPACE
-
-source "${HOME}/.zgen/zgen.zsh"
-
-# configure zsh-autosuggestions
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
-# disable compinit from zgen
-ZGEN_AUTOLOAD_COMPINIT=""
-
-autoload -Uz compinit
-if [ $(date +'%j') != $((stat -c '%w' ~/.zcompdump | cut -d' ' -f1) || 0) ]; then
-    compinit
-  else
-    compinit -C
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if ! zgen saved; then
-  zgen oh-my-zsh
-  zgen oh-my-zsh plugins/golang
-  zgen oh-my-zsh plugins/gpg-agent
-  zgen oh-my-zsh plugins/kubectl
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-  zgen load mafredri/zsh-async
-  zgen load sindresorhus/pure
-  zgen load zsh-users/zsh-syntax-highlighting
-  zgen load zsh-users/zsh-autosuggestions
-
-  zgen save
+if [ ! -d "${ZINIT_HOME}" ]; then
+  mkdir -p "$(dirname ${ZINIT_HOME})"
+  git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
 fi
 
-# import shell configurations
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Install powerlevel10k prompt
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## plugins
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# load completions
+autoload -U compinit && compinit
+# completion styling
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# optimise completions load at startup time
+zinit cdreplay -q
+
+## import shell configurations
 source ~/.env.sh
 source ~/.aliases.sh
+# TODO: cleanup functions file, loads of old stuff in there
 source ~/.functions.sh
-source ~/.completions.sh
+# TODO: delete this line and the file it refers to
+# source ~/.completions.sh
 
-# setup asdf
-source ~/.asdf/asdf.sh
-source ~/.asdf/completions/asdf.bash
+## OMZ plugins
 
-# start keychain
-eval $(keychain --quiet --quick --eval --agents gpg,ssh id_rsa asgard ${GPGKEY})
+# keychain
+zinit snippet OMZP::gpg-agent
+zstyle :omz:plugins:keychain agents gpg,ssh
+zstyle :omz:plugins:keychain identities id_rsa asgard ${GPGKEY}
+zstyle :omz:plugins:keychain options --quiet --quick
+zinit snippet OMZP::keychain
 
-# rag: rbenv init
-eval "$(rbenv init -)"
+# asdf
+zinit snippet OMZP::asdf
 
-# configure fzf keybindings
-source /usr/share/fzf/key-bindings.zsh
+## history
 
-# configure broot
-source /home/rag/.config/broot/launcher/bash/br
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# uncomment for profiling
-# uncomment at the top of the file as well
-# zprof
+# setup fzf for search
+eval "$(fzf --zsh)"
 
+## keybindings
+
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '\e.' insert-last-word
+# zsh-autosuggestions
+bindkey '^e' autosuggest-accept
