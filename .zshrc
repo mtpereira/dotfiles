@@ -42,7 +42,6 @@ zinit cdreplay -q
 ## import shell configurations
 source ~/.env.sh
 source ~/.aliases.sh
-# TODO: cleanup functions file, loads of old stuff in there
 source ~/.functions.sh
 
 ## OMZ plugins
