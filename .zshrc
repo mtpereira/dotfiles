@@ -44,8 +44,6 @@ source ~/.env.sh
 source ~/.aliases.sh
 # TODO: cleanup functions file, loads of old stuff in there
 source ~/.functions.sh
-# TODO: delete this line and the file it refers to
-# source ~/.completions.sh
 
 ## OMZ plugins
 
