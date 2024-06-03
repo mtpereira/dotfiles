@@ -1,6 +1,6 @@
 # Shell commands
 alias ls="eza -F"
-alias l="exa --sort new --long --git --classify --group"
+alias l="eza --sort new --long --git --classify --group"
 alias la="l -a"
 alias cat="bat"
 alias less="bat --paging=always"
@@ -43,7 +43,7 @@ alias ducks="du -cms * | sort -rn | head"
 alias hexdecode="xxd -r -p"
 alias pproute="ip route | sort -k5 | perl -pe 's/^/$. - /'"
 alias ymlinter="python -c 'import yaml,sys;yaml.safe_load(sys.stdin)'"
-alias zgen-upgrade="zgen update && zgen reset && source ~/.zshrc"
+alias zinit-upgrade="zinit self-update ; zinit update --parallel"
 
 if [ -d ~/.aliases.d/ ]; then
     for file in ~/.aliases.d/*.sh; do
